@@ -1,0 +1,30 @@
+@import "bootstrap";
+
+body {
+	font-family: 'Gafata', sans-serif;
+	color: white;
+	text-shadow: 2px 2px #000;
+	font-size: 18px;
+	background: #23693d;
+	text-align: center;
+}
+h1 {
+	font-family: 'UnifrakturCook', cursive;
+	font-size: 30px;
+}
+img {
+	max-width: 200px;
+	padding: 50px;
+}
+p {
+	padding: 10px 0;
+	line-height: 18px;
+	margin: 0;
+}
+.details_container {
+	background: #CB8;
+	width: 200px;
+	margin: 0 auto;
+	border-radius: 10px;
+	border: 1px solid black;
+}
