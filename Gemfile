@@ -10,6 +10,10 @@ group :development do
 end
 
 gem 'pg'
+gem 'twitter'
+# gem 'devise'
+# gem 'tweetstream'
+gem 'omniauth-twitter'
 
 # Gems used only for assets and not required
 # in production environments by default.

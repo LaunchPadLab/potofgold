@@ -5,7 +5,15 @@
 <%= image_tag 'gold.png' %>
 <p>Claim your gold</p>
 
-<div class="details_container">
+<!-- <div class="details_container">
   <p style="border-bottom: 1px solid black;">@launchpadlab</p>
   <p>#potofgold</p>
-</div>
+</div> -->
+
+<% if session[:token] %>
+  <p><%= link_to 'Claim your rewards!', rewards_url %></p>
+  <p><%= session[:user_name] %></p>
+  <p><%= link_to 'Sign Out', signout_url, method: :delete %></p>
+<% else %>
+  <p><%= link_to 'Sign in with Twitter', '/auth/twitter' %></p>
+<% end %>
