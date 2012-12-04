@@ -1,0 +1,30 @@
+<h1>My Deals</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Deal #</th>
+    <th>Coupon text</th>
+    <th>URL</th>
+    <th>End date</th>
+    <th>Redemptions</th>
+    <th>Followers</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @deals.each do |deal| %>
+  <tr>
+    <td><%= deal.id %></td>
+    <td><%= deal.coupon_text %></td>
+    <td><%= deal_url(deal) %></td>
+    <td><%= deal.end_date.strftime('%D') %></td>
+    <td><%= deal.redemptions %></td>
+    <td><%= deal.followers %></td>
+    <td><%= link_to 'Show', deal %></td>
+    <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
+    <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'New Deal', new_deal_path %>

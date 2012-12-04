@@ -1,0 +1,19 @@
+<div class='well well-large'>
+  <%= image_tag @deal.advertiser.image_url %>
+  <h1 class="logo"><%= @deal.advertiser.username %></h1>
+  <p><%= @deal.coupon_text %></p>
+</div>
+
+<div class="well">
+  <% if @deal.coupons.for_user(current_user).any? %>
+    <p><%= link_to 'Redeem', '', class: 'btn btn-danger btn-large' %></p>
+  <% else %>
+    <p><b>Tweet this out to receive the deal:</b></p>
+    <p><%= @deal.sample_tweet %></p>
+  <% end %>
+  <% if session[:uid] %>
+    <p><%= link_to 'Tweet', '', class: 'btn btn-primary btn-large' %></p>
+  <% else %>
+    <p><%= link_to 'Sign in to Twitter', '/auth/twitter' %></p>
+  <% end %>
+</div>

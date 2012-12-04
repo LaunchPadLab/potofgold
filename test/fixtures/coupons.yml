@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  redeemed: false
+  deal_id: 1
+  followers: 1
+
+two:
+  user_id: 1
+  redeemed: false
+  deal_id: 1
+  followers: 1

@@ -1,19 +1,9 @@
-<br/>
-<br/>
-<br/>
-<h1>Pot of Gold</h1>
-<%= image_tag 'gold.png' %>
+<h1 class="logo">Pot of Gold</h1>
 <p>Claim your gold</p>
+<%= image_tag 'gold.png' %>
 
-<!-- <div class="details_container">
-  <p style="border-bottom: 1px solid black;">@launchpadlab</p>
-  <p>#potofgold</p>
-</div> -->
-
-<% if session[:token] %>
-  <p><%= link_to 'Claim your rewards!', rewards_url %></p>
-  <p><%= session[:user_name] %></p>
-  <p><%= link_to 'Sign Out', signout_url, method: :delete %></p>
+<% if current_advertiser %>
+  <p>@<%= session[:user_name] %> | <%= link_to 'Sign Out', signout_url, method: :delete %></p>
 <% else %>
   <p><%= link_to 'Sign in with Twitter', '/auth/twitter' %></p>
 <% end %>
