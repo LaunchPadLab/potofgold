@@ -24,6 +24,12 @@ class DealsController < ApplicationController
   
   def stats
     @deal = Deal.find(params[:id], include: [:advertiser, :coupons, :users])
+    @h = LazyHighCharts::HighChart.new('graph', style: '') do |f|
+      f.options[:chart][:defaultSeriesType] = "area"
+      f.options[:plotOptions] = {areaspline: {pointInterval: 1.day, pointStart: 10.days.ago}}
+      f.series(:name=>'Followers', :data=> @deal.followers_array)
+      f.xAxis(type: :datetime)
+    end
   end
 
   # GET /deals/new

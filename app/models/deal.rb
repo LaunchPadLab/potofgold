@@ -14,6 +14,10 @@ class Deal < ActiveRecord::Base
     self.coupons.redeemed.length
   end
   
+  def followers_array
+    self.coupons.any? ? self.coupons.map { |c| c.followers } : [0]
+  end
+  
   def followers
     self.coupons.any? ? self.coupons.map { |c| c.followers }.total : 0
   end
