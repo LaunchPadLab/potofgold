@@ -3,7 +3,6 @@
   <p class="logo_show"><%= @deal.advertiser.username %></p>
   <p><%= @deal.coupon_text %></p>
   <% if @deal.coupons.for_user(current_authorized_user).any? %>
-    <p><%= image_tag 'qr.jpg' %></p>
     <p><%= link_to 'Redeem', '', class: 'btn btn-danger btn-large' %></p>
   <% end %>
 </div>
