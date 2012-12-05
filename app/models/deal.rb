@@ -18,4 +18,8 @@ class Deal < ActiveRecord::Base
     self.coupons.any? ? self.coupons.map { |c| c.followers }.total : 0
   end
   
+  def conversion
+    self.coupons.redeemed.length.to_f / self.coupons.length.to_f
+  end
+  
 end

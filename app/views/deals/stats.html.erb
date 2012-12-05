@@ -1,0 +1,18 @@
+<h1>Deal: <%= @deal.id %></h1>
+<p><%= @deal.coupon_text %></p>
+<div class="row span12">
+  <div class="well span2">
+    <p>Conversion:</p>
+    <p class="percentage"><b><%= number_to_percentage(@deal.conversion, precision: 0) %></b></p>
+    <p><%= @deal.coupons.redeemed.length %> / <%= @deal.coupons.length %></p>
+    <br/>
+    <hr>
+    <br/>
+    <p>Seen by:</p>
+    <p class="followers"><b><%= @deal.followers %></b></p>
+    <p>people</p>
+  </div>
+  <div class="well span8">
+    <%= image_tag 'http://school.discoveryeducation.com/clipart/images/graph.gif' %>
+  </div>
+</div>
