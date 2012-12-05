@@ -2,7 +2,7 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
   def index
-    @deals = current_advertiser.deals.includes(:coupons)
+    @deals = current_authorized_user.deals.includes(:coupons)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class DealsController < ApplicationController
   # GET /deals/1.json
   def show
     @deal = Deal.find(params[:id], include: [:advertiser, :coupons])
-    session[:deal_id] = @deal.id unless current_advertiser || current_user
+    session[:deal_id] = @deal.id unless signed_in?
 
     respond_to do |format|
       format.html # show.html.erb

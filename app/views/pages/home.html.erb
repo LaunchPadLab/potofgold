@@ -2,8 +2,8 @@
 <p>Claim your gold</p>
 <%= image_tag 'gold.png' %>
 
-<% if current_advertiser %>
-  <p>@<%= session[:user_name] %> | <%= link_to 'Sign Out', signout_url, method: :delete %></p>
+<% if current_authorized_user %>
+  <p>@<%= current_authorized_user.username %> | <%= link_to 'Sign Out', signout_url, method: :delete %></p>
 <% else %>
   <p><%= link_to 'Sign in with Twitter', '/auth/twitter' %></p>
 <% end %>

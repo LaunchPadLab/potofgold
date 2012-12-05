@@ -11,7 +11,7 @@
 <body>
 
   <div class="container">
-    <% if current_advertiser %>
+    <% if current_authorized_user %>
       <%= render 'layouts/header' %>
     <% end %>
     <%= yield %>

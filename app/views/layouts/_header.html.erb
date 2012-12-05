@@ -2,7 +2,7 @@
   <div class="navbar-inner">
     <%= link_to 'Pot of Gold', root_url, class: 'brand' %>
     <span class="brand">
-      @<%= current_advertiser.username %>
+      @<%= current_authorized_user.username %>
     </span>
     <ul class="nav">
       <li class="active"><%= link_to 'My Deals', deals_url %></li>

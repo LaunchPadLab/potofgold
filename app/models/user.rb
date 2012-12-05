@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   
   #Associations
   has_many :coupons
+  has_many :deals, through: :coupons
   
   #Class Method
   def self.find_or_create_from_auth_hash(auth_hash)
