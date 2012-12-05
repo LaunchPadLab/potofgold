@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     unless user
       user = self.create(image_url: auth_hash['info']['image'], uid: auth_hash['uid'], username: auth_hash['info']['nickname'])
     end
+    return user
   end
   
 end

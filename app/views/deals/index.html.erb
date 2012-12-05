@@ -4,10 +4,12 @@
   <tr>
     <th>Deal #</th>
     <th>Coupon text</th>
-    <th>URL</th>
+    <th>Share URL</th>
     <th>End date</th>
+    <th>Coupons</th>
     <th>Redemptions</th>
     <th>Followers</th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,13 +19,15 @@
   <tr>
     <td><%= deal.id %></td>
     <td><%= deal.coupon_text %></td>
-    <td><%= deal_url(deal) %></td>
+    <td><%= link_to deal_url(deal), deal_url(deal) %></td>
     <td><%= deal.end_date.strftime('%D') %></td>
+    <td><%= deal.coupons.length %></td>
     <td><%= deal.redemptions %></td>
     <td><%= deal.followers %></td>
+    <td><%= link_to 'Stats', deal_stats_url(deal) %></td>
     <td><%= link_to 'Show', deal %></td>
     <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
-    <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'X', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

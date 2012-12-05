@@ -7,14 +7,7 @@ class Deal < ActiveRecord::Base
   #Associations
   belongs_to :advertiser
   has_many :coupons
-  
-  #Model Callback
-  after_create :update_deal_url
-  
-  def update_deal_url
-    self.coupon_text += " http://potofgold.herokuapp.com/deals/#{self.id}"
-    self.save
-  end
+  has_many :users, through: :coupons
   
   #Instance methods
   def redemptions

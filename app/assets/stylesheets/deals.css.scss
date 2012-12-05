@@ -1,0 +1,23 @@
+.well {
+	position: relative;
+}
+.banner {
+	position: absolute;
+	top: 0;
+	left: 15px;
+	background: #006ECC;
+	padding: 20px;
+	-moz-border-radius: 0 0 10px 10px;
+	-webkit-border-radius: 0 0 10px 10px;
+	border-radius: 0 0 10px 10px;
+	-khtml-border-radius: 0 0 10px 10px;
+	z-index: 5;
+}
+
+.logo_show {
+	font-family: 'UnifrakturCook', cursive;
+	font-size: 50px;
+	line-height: 75px;
+	text-shadow: 2px 2px #000;
+	color: white;
+}

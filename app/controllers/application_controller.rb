@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_authorized_user
   
   def current_authorized_user
-    AuthorizedUser.current_authorized_user(session[:uid])
+    AuthorizedUser.new(session[:uid]).current_authorized_user
   end
   
 end

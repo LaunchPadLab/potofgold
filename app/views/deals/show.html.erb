@@ -1,19 +1,26 @@
 <div class='well well-large'>
-  <%= image_tag @deal.advertiser.image_url %>
-  <h1 class="logo"><%= @deal.advertiser.username %></h1>
+  <%= image_tag @deal.advertiser.image_url, class: 'banner' %>
+  <p class="logo_show"><%= @deal.advertiser.username %></p>
   <p><%= @deal.coupon_text %></p>
+  <% if @deal.coupons.for_user(current_authorized_user).any? %>
+    <p><%= image_tag 'qr.jpg' %></p>
+    <p><%= link_to 'Redeem', '', class: 'btn btn-danger btn-large' %></p>
+  <% end %>
 </div>
 
 <div class="well">
-  <% if @deal.coupons.for_user(current_user).any? %>
-    <p><%= link_to 'Redeem', '', class: 'btn btn-danger btn-large' %></p>
-  <% else %>
+  <% if @deal.coupons.for_user(current_authorized_user).empty? %>
     <p><b>Tweet this out to receive the deal:</b></p>
     <p><%= @deal.sample_tweet %></p>
-  <% end %>
-  <% if session[:uid] %>
-    <p><%= link_to 'Tweet', '', class: 'btn btn-primary btn-large' %></p>
+    <% if session[:uid] %>
+      <p><%= link_to 'Tweet', '', class: 'btn btn-primary btn-large' %></p>
+    <% else %>
+      <p><%= link_to 'Sign in to Twitter to Tweet', '/auth/twitter' %></p>
+    <% end %>
   <% else %>
-    <p><%= link_to 'Sign in to Twitter', '/auth/twitter' %></p>
+    <p>Conversation:</p>
+    <% @deal.coupons.each do |coupon| %>
+      <p><%= @deal.sample_tweet %> by <%= coupon.user.username %></p>
+    <% end %>
   <% end %>
 </div>

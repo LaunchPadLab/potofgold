@@ -13,13 +13,17 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.json
   def show
-    @deal = Deal.find(params[:id], include: [:advertiser, :coupons])
-    session[:deal_id] = @deal.id unless signed_in?
+    @deal = Deal.find(params[:id], include: [:advertiser, :coupons, :users])
+    session[:deal_id] = @deal.id unless current_authorized_user
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @deal }
     end
+  end
+  
+  def stats
+    @deal = Deal.find(params[:id], include: [:advertiser, :coupons, :users])
   end
 
   # GET /deals/new
@@ -41,7 +45,7 @@ class DealsController < ApplicationController
   # POST /deals
   # POST /deals.json
   def create
-    @deal = current_advertiser.deals.new(params[:deal])
+    @deal = current_authorized_user.deals.new(params[:deal])
 
     respond_to do |format|
       if @deal.save
