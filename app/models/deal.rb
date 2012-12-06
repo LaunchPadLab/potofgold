@@ -34,4 +34,8 @@ class Deal < ActiveRecord::Base
     self.end_date >= DateTime.now()
   end
   
+  def referrals
+    self.coupons.referrals.length
+  end
+  
 end
