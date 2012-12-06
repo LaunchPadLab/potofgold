@@ -20,7 +20,7 @@
     <td><%= deal.id %></td>
     <td><%= deal.coupon_text %></td>
     <td><%= link_to deal_url(deal), deal_url(deal) %></td>
-    <td><%= deal.end_date.strftime('%D') %></td>
+    <td><%= deal.end_date.strftime('%D') if deal.end_date %></td>
     <td><%= deal.coupons.length %></td>
     <td><%= deal.redemptions %></td>
     <td><%= deal.followers %></td>

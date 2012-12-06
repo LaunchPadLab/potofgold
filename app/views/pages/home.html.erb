@@ -1,9 +1,15 @@
-<h1 class="logo">Pot of Gold</h1>
-<p>Claim your gold</p>
-<%= image_tag 'gold.png' %>
+<div class="background_container">
+
+<h1>Help Your Fans Spread the Word</h1>
 
 <% if current_authorized_user %>
-  <p>@<%= current_authorized_user.username %> | <%= link_to 'Sign Out', signout_url, method: :delete %></p>
+	@<%= current_authorized_user.username %> | <%= link_to 'Sign Out', signout_url, method: :delete %>
 <% else %>
-  <p><%= link_to 'Sign in with Twitter', '/auth/twitter' %></p>
+	<%= link_to 'Sign in with Twitter', '/auth/twitter', class: 'signin_btn' %>
 <% end %>
+
+</div>
+
+<script>
+  $.backstretch("<%= image_path 'bg_shoe_store.jpg' %>");
+</script>
