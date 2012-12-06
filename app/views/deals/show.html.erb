@@ -20,7 +20,7 @@
     <p>Sample: <%= @deal.sample_tweet %></p>
     <% if session[:uid] %>
       <%= form_tag(coupons_url) do %>
-        <%= text_area_tag :tweet, "#{@deal.sample_tweet} #{deals_url(@deal, referred: true)}", class: 'span6', rows: '3' %>
+        <%= text_area_tag :tweet, "#{@deal.sample_tweet} #{deal_url(@deal, referred: true)}", class: 'span6', rows: '3' %>
         <p class="countdown">140</p>
         <p><%= submit_tag 'Tweet', class: 'btn btn-primary btn-large', id: 'tweet_button' %></p>
       <% end %>

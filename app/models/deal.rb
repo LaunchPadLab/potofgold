@@ -23,7 +23,8 @@ class Deal < ActiveRecord::Base
   end
   
   def conversion
-    self.coupons.redeemed.length.to_f / self.coupons.length.to_f * 100.0
+    self.coupons.length ? self.coupons.redeemed.length.to_f / self.coupons.length.to_f * 100.0 : 0
+      
   end
   
   def expired?
