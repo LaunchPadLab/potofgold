@@ -10,7 +10,7 @@ class TwitterMessaging
   end
   
   def send_tweet(status)
-    #@client.update(status)
+    @client.update(status)
   end
   
 end

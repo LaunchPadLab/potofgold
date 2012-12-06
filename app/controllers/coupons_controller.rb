@@ -2,7 +2,7 @@ class CouponsController < ApplicationController
   # GET /coupons
   # GET /coupons.json
   def index
-    @coupons = Coupon.all
+    @coupons = current_authorized_user.coupons.includes(:deal).order('redeemed')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -59,7 +59,7 @@ class CouponsController < ApplicationController
     @coupon = Coupon.find(params[:id])
 
     respond_to do |format|
-      if @coupon.update_attributes(params[:coupon])
+      if @coupon.update_attributes(redeemed: params[:redeemed])
         format.html { redirect_to @coupon, notice: 'Coupon was successfully updated.' }
         format.json { head :no_content }
       else

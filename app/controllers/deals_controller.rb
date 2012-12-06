@@ -14,7 +14,9 @@ class DealsController < ApplicationController
   # GET /deals/1.json
   def show
     @deal = Deal.find(params[:id], include: [:advertiser, :coupons, :users])
+    session[:referred] = true if params[:referred]
     session[:deal_id] = @deal.id unless current_authorized_user
+    @coupon = @deal.coupons.for_user(current_authorized_user).first
 
     respond_to do |format|
       format.html # show.html.erb

@@ -5,7 +5,11 @@
       @<%= current_authorized_user.username %>
     </span>
     <ul class="nav">
-      <li class="active"><%= link_to 'My Deals', deals_url %></li>
+      <% if current_authorized_user.class.name.include?("Advertiser") %>
+        <li class="active"><%= link_to 'My Deals', deals_url %></li>
+      <% else %>
+        <li class="active"><%= link_to 'My Coupons', coupons_url %></li>
+      <% end %>
       <li><%= link_to 'Sign Out', signout_url, method: :delete %></li>
     </ul>
   </div>
