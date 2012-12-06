@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204212603) do
+ActiveRecord::Schema.define(:version => 20121206164343) do
 
   create_table "advertisers", :force => true do |t|
     t.string   "username"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20121204212603) do
     t.integer  "followers"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.boolean  "referred"
   end
 
   create_table "deals", :force => true do |t|
