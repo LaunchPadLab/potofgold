@@ -2,7 +2,7 @@ class CouponsController < ApplicationController
   # GET /coupons
   # GET /coupons.json
   def index
-    @coupons = Coupon.all
+    @coupons = current_authorized_user.coupons.includes(:deal).order('redeemed')
 
     respond_to do |format|
       format.html # index.html.erb
