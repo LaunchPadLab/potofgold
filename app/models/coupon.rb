@@ -8,6 +8,11 @@ class Coupon < ActiveRecord::Base
   #Scope
   scope :redeemed, where(redeemed: true)
   scope :for_user, lambda { |user_id| where(user_id: user_id) }
+  
   #Instance Method
+  def not_redeemed?
+    !self.redeemed
+  end
+  
   
 end

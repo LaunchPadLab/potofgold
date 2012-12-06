@@ -2,9 +2,16 @@
   <%= image_tag @deal.advertiser.image_url, class: 'banner' %>
   <p class="logo_show"><%= @deal.advertiser.username %></p>
   <p><%= @deal.coupon_text %></p>
-  <% if @deal.coupons.for_user(current_authorized_user).any? %>
-    <p><%= link_to 'Redeem', '', class: 'btn btn-danger btn-large' %></p>
-  <% end %>
+  
+  <% if @coupon %>
+    <% if @coupon.not_redeemed? && @deal.not_expired? %>
+      <p><%= link_to 'Redeem', coupon_url(@coupon, redeemed: true), class: 'btn btn-danger btn-large', method: :put %></p>
+    <% elsif @coupon.redeemed? %>
+      <p>Thanks for using this coupon on <%= @coupon.updated_at.strftime('%D') %></p>
+    <% else %>
+        <p>Sorry. This deal expired on <%= @deal.end_date.strftime('%D') %></p>
+    <% end %>
+  <% end %>  
 </div>
 
 <div class="well">

@@ -26,4 +26,12 @@ class Deal < ActiveRecord::Base
     self.coupons.redeemed.length.to_f / self.coupons.length.to_f
   end
   
+  def expired?
+    self.end_date < DateTime.now()
+  end
+  
+  def not_expired?
+    self.end_date >= DateTime.now()
+  end
+  
 end
