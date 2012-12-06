@@ -1,5 +1,5 @@
 class Coupon < ActiveRecord::Base
-  attr_accessible :deal_id, :followers, :redeemed, :user_id, :referred
+  attr_accessible :deal_id, :followers, :redeemed, :user_id, :referred, :tweet
   
   #Association
   belongs_to :user
