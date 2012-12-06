@@ -19,7 +19,7 @@
     <p><b>Tweet this out to receive the deal:</b></p>
     <p><%= @deal.sample_tweet %></p>
     <% if session[:uid] %>
-      <p><%= link_to 'Tweet', '', class: 'btn btn-primary btn-large' %></p>
+      <p><a href="https://twitter.com/intent/tweet?url=<%= URI::encode(deal_url(@deal)) %>&text=<%= URI::encode(@deal.sample_tweet) %>" class='btn btn-primary btn-large'>Tweet</a></p>
     <% else %>
       <p><%= link_to 'Sign in to Twitter to Tweet', '/auth/twitter' %></p>
     <% end %>
