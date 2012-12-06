@@ -14,6 +14,7 @@ gem 'twitter'
 # gem 'devise'
 # gem 'tweetstream'
 gem 'omniauth-twitter'
+gem 'newrelic_rpm'
 
 # Gems used only for assets and not required
 # in production environments by default.
