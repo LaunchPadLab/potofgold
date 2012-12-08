@@ -2,7 +2,6 @@
 
 <table class="table table-striped">
   <tr>
-    <th>Deal #</th>
     <th>Coupon text</th>
     <th>Share URL</th>
     <th>End date</th>
@@ -32,3 +31,7 @@
 <% end %>
 </table>
 <%= link_to 'New Deal', new_deal_path %>
+
+<script>
+  $.backstretch("<%= image_path 'bg_dark_bar.jpg' %>");
+</script>

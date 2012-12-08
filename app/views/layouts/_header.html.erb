@@ -1,10 +1,8 @@
-<div class="navbar">
-  <div class="navbar-inner">
-    <%= link_to 'Pot of Gold', root_url, class: 'brand' %>
-    <span class="brand">
-      @<%= current_authorized_user.username %>
-    </span>
-    <ul class="nav">
+<div class="navigation">
+  <div class="navigation-inner container">
+    <%= link_to 'Pot of Gold', root_url, class: 'logo' %>
+    <ul class="navigation-links">
+      <li class="twitter_handle">@<%= current_authorized_user.username %></li>
       <% if current_authorized_user.class.name.include?("Advertiser") %>
         <li class="active"><%= link_to 'My Deals', deals_url %></li>
       <% else %>

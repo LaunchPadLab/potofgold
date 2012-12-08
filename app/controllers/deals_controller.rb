@@ -1,4 +1,8 @@
 class DealsController < ApplicationController
+
+  def mydeal
+  end
+
   # GET /deals
   # GET /deals.json
   def index
@@ -23,7 +27,7 @@ class DealsController < ApplicationController
       format.json { render json: @deal }
     end
   end
-  
+
   def stats
     @deal = Deal.find(params[:id], include: [:advertiser, :coupons, :users])
     @h = LazyHighCharts::HighChart.new('graph', style: '') do |f|

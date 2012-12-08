@@ -12,7 +12,9 @@ Potofgold::Application.routes.draw do
   get '/auth/twitter/callback' => 'sessions#create'
   delete '/signout' => 'sessions#destroy', as: :signout
   get '/deal_stats/:id' => 'deals#stats', as: :deal_stats
-  
+
   post '/redeem/:id' => 'coupons#redeem', as: :redeem
+
+  get 'mydeal' => 'deals#deal', as: :mydeal
 
 end
