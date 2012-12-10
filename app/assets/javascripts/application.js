@@ -15,4 +15,5 @@
 //= require highcharts
 //= require jquery.backstretch.min
 //= require jquery.ui.datepicker
+//= require best_in_place
 //= require_tree .

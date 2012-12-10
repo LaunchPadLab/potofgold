@@ -25,6 +25,7 @@ group :assets do
   gem 'bootstrap-sass', '~> 2.2.1.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-ui-rails'
+  gem "best_in_place"
 end
 
 gem 'jquery-rails'
