@@ -1,12 +1,55 @@
-<div class="background_container">
-  <h1>New deal</h1>
-  <h3>Business Name: <%= current_authorized_user.business_name %></h3>
+<div class="deal_container">
+	<div class="deal_inner">
+    <h1><%= current_authorized_user.business_name %></h1>
 
-  <%= render 'form' %>
-
+    <%= form_for(@deal) do |f| %>
+      <% if @deal.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
+          <ul>
+          <% @deal.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <%#= f.text_field :coupon_text, class: 'span3 form_input'%>
+        <%= best_in_place @deal, :coupon_text, type: :input, class: 'span3', nil: 'Enter offer text' %>
+      </div>
+      <div class="field">
+        <%#= f.text_area :description, class: 'span6 form_input', rows: '6' %>
+        <%= best_in_place @deal, :description, type: :textarea, inner_class: 'span3', nil: 'Enter description' %>
+      </div>
+      <div class="field">
+        <%= f.label :end_date %>
+        <%= f.text_field :end_date, class: 'form_input', placeholder: 'YYYY-MM-DD' %>
+      </div>
+      <div class="field">
+        <%= best_in_place @deal, :sample_tweet, type: :textarea, inner_class: 'span3', nil: 'Enter sample tweet' %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+	</div>
 </div>
 
 <script>
   $.backstretch("<%= image_path 'bg_coffee_shop.jpeg' %>");
   // $.backstretch("<%#= image_path current_authorized_user.background_image_url %>");
+  
+  $(function(){
+    $("#deal_end_date").datepicker({ dateFormat: 'yy-mm-dd', constrainInput: true, minDate: new Date() });
+
+    $('.best_in_place').best_in_place();
+
+    $('.best_in_place').hover(function(e){
+      $(this).css('background-color', 'rgba(17,17,17,0.7)');
+    }, function(e){
+      $(this).css('background-color', 'white');
+    });
+
+  });
+  
 </script>
