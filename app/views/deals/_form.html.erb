@@ -30,3 +30,11 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+
+  $(function(){
+    $("#deal_end_date").datepicker({ dateFormat: 'yy-mm-dd', constrainInput: true, minDate: new Date() });
+  });
+
+</script>
