@@ -1,5 +1,12 @@
-<h1>New deal</h1>
+<div class="background_container">
+  <h1>New deal</h1>
+  <h3>Business Name: <%= current_authorized_user.business_name %></h3>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= link_to 'Back', deals_path %>
+</div>
+
+<script>
+  $.backstretch("<%= image_path 'bg_coffee_shop.jpeg' %>");
+  // $.backstretch("<%#= image_path current_authorized_user.background_image_url %>");
+</script>

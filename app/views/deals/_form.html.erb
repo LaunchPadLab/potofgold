@@ -11,12 +11,16 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :end_date %>
-    <%= f.text_field :end_date %>
+    <%= f.label 'Offer' %><br />
+    <%= f.text_field :coupon_text, class: 'span3'%>
   </div>
   <div class="field">
-    <%= f.label :coupon_text %><br />
-    <%= f.text_area :coupon_text %>
+    <%= f.label :description %><br />
+    <%= f.text_area :description, class: 'span6', rows: '6' %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %>
+    <%= f.text_field :end_date %>
   </div>
   <div class="field">
     <%= f.label :sample_tweet %><br />

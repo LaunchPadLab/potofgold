@@ -1,8 +1,6 @@
 class Deal < ActiveRecord::Base
-  
-  include Rails.application.routes.url_helpers
-  
-  attr_accessible :advertiser_id, :coupon_text, :end_date, :sample_tweet
+
+  attr_accessible :advertiser_id, :coupon_text, :end_date, :sample_tweet, :description
   
   #Associations
   belongs_to :advertiser

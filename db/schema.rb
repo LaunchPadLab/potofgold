@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210162652) do
+ActiveRecord::Schema.define(:version => 20121210164348) do
 
   create_table "advertisers", :force => true do |t|
     t.string   "username"
     t.string   "uid"
     t.string   "image_url"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "business_name"
+    t.string   "background_image_url"
   end
 
   create_table "coupons", :force => true do |t|
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20121210162652) do
     t.string   "sample_tweet"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.text     "description"
   end
 
   create_table "users", :force => true do |t|
