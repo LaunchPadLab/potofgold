@@ -30,11 +30,18 @@ class DealsController < ApplicationController
 
   def stats
     @deal = Deal.find(params[:id], include: [:advertiser, :coupons, :users])
+    
+    grouped_coupons = @deal.coupons.oldest.group_by { |c| c.created_at.strftime('%D') }
+    prev = 0
+    arr = grouped_coupons.values.map { |coupons| coupons.map { |c| c.followers}.total }.collect { |value| prev += value }
+
     @h = LazyHighCharts::HighChart.new('graph', style: '') do |f|
+      f.options[:title][:text] = 'Who\'s seen it?'
+      f.options[:legend][:enabled] = false
       f.options[:chart][:defaultSeriesType] = "area"
-      f.options[:plotOptions] = {areaspline: {pointInterval: 1.day, pointStart: 10.days.ago}}
-      f.series(:name=>'Followers', :data=> @deal.followers_array)
-      f.xAxis(type: :datetime)
+      f.options[:plotOptions] = {areaspline: {pointStart: @deal.created_at }}
+      f.options[:xAxis][:type] = "datetime"
+      f.series(:name=>'Followers', :data=> arr)
     end
   end
 

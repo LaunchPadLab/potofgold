@@ -40,11 +40,16 @@ class CouponsController < ApplicationController
   # POST /coupons
   # POST /coupons.json
   def create
-    @coupon = Coupon.new(params[:coupon])
+    tweet = TwitterMessaging.new(session[:token], session[:secret]).send_tweet(params[:tweet])
+    
+    params[:coupon] = { deal_id: session[:deal_id], followers: tweet[:user][:followers_count], redeemed: false, referred: session[:referred], tweet: params[:tweet] }
+    @coupon = current_authorized_user.coupons.new(params[:coupon])
 
     respond_to do |format|
       if @coupon.save
-        format.html { redirect_to @coupon, notice: 'Coupon was successfully created.' }
+        session[:deal_id] = nil
+        session[:referred] = nil
+        format.html { redirect_to @coupon.deal notice: 'Coupon was successfully created.' }
         format.json { render json: @coupon, status: :created, location: @coupon }
       else
         format.html { render action: "new" }

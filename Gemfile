@@ -16,6 +16,8 @@ gem 'twitter'
 gem 'omniauth-twitter'
 gem 'bourbon'
 gem 'newrelic_rpm'
+gem 'jquery-ui-rails'
+gem "best_in_place"
 
 # Gems used only for assets and not required
 # in production environments by default.

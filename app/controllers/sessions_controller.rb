@@ -8,9 +8,6 @@ class SessionsController < ApplicationController
     if session[:deal_id]
       @user = User.find_or_create_from_auth_hash(auth_hash)
       @deal = Deal.find_by_id(session[:deal_id])
-      @user.coupons.create(deal_id: @deal.id, followers: auth_hash['extra']['raw_info']['followers_count'], redeemed: false, referred: session[:referred])
-      session[:deal_id] = nil
-      session[:referred] = nil
       redirect_to deal_url(@deal)
     else
       @advertiser = Advertiser.find_or_create_from_auth_hash(auth_hash)

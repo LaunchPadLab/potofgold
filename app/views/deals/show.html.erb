@@ -16,17 +16,67 @@
 
 <div class="well">
   <% if @deal.coupons.for_user(current_authorized_user).empty? %>
-    <p><b>Tweet this out to receive the deal:</b></p>
-    <p><%= @deal.sample_tweet %></p>
+    <p><b>Tweet out something to receive the deal:</b></p>
+    <p>Sample: <%= @deal.sample_tweet %></p>
     <% if session[:uid] %>
-      <p><a href="https://twitter.com/intent/tweet?url=<%= URI::encode(deal_url(@deal, referred: true)) %>&text=<%= URI::encode(@deal.sample_tweet) %>" class='btn btn-primary btn-large'>Tweet</a></p>
+      <%= form_tag(coupons_url) do %>
+        <%= text_area_tag :tweet, "#{@deal.sample_tweet} #{deal_url(@deal, referred: true)}", class: 'span6', rows: '3' %>
+        <p class="countdown">140</p>
+        <p><%= submit_tag 'Tweet', class: 'btn btn-primary btn-large', id: 'tweet_button' %></p>
+      <% end %>
     <% else %>
       <p><%= link_to 'Sign in to Twitter', '/auth/twitter' %></p>
     <% end %>
   <% else %>
     <p>Conversation:</p>
     <% @deal.coupons.each do |coupon| %>
-      <p><%= @deal.sample_tweet %> by <%= coupon.user.username %></p>
+      <p><%= @coupon.tweet %> by <%= coupon.user.username %></p>
     <% end %>
   <% end %>
 </div>
+
+<script>
+
+  $(function(){
+    $('#tweet').focus();
+    
+    function createSelection(start, end, field) {
+        if ( field.createTextRange ) {
+          var newend = end - start;
+          var selRange = field.createTextRange();
+          selRange.collapse(true);
+          selRange.moveStart("character", start);
+          selRange.moveEnd("character", newend);
+          selRange.select();
+        } 
+        else if( field.setSelectionRange ){
+          field.setSelectionRange(start, end);
+        } 
+        field.focus();
+    }
+    var target = document.getElementById('tweet');
+    createSelection(0, <%= @deal.sample_tweet.length %>, target);
+    
+    function updateCountdown() {
+      // 140 is the max message length
+      var remaining = 140 - $('#tweet').val().length;
+      if (remaining <= 10){
+        $('.countdown').css('color', 'red');
+      }
+      else {
+        $('.countdown').css('color', 'black');
+      }
+      if (remaining < 0){
+        $('#tweet_button').attr('disabled', 'disabled');
+      }
+      else {
+        $('#tweet_button').removeAttr('disabled');
+      }
+      $('.countdown').text(remaining);
+    }
+    updateCountdown();
+    $('#tweet').change(updateCountdown);
+    $('#tweet').keyup(updateCountdown);
+  })
+
+</script>
