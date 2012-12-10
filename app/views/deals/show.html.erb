@@ -1,43 +1,44 @@
-<div class='well well-large'>
-  <%= image_tag @deal.advertiser.image_url, class: 'banner' %>
-  <p class="logo_show"><%= @deal.advertiser.username %></p>
-  <p><%= @deal.coupon_text %></p>
-  
-  <% if @coupon %>
-    <% if @coupon.not_redeemed? && @deal.not_expired? %>
-      <p><%= link_to 'Redeem', coupon_url(@coupon, redeemed: true), class: 'btn btn-danger btn-large', method: :put %></p>
-    <% elsif @coupon.redeemed? %>
-      <p>Thanks for using this coupon on <%= @coupon.updated_at.strftime('%D') %></p>
-    <% else %>
-        <p>Sorry. This deal expired on <%= @deal.end_date.strftime('%D') %></p>
+<div class="deal_container">
+	<div class="deal_inner">
+		<h1><%= @deal.advertiser.business_name %></h1>
+		<h2><%= @deal.coupon_text %></h2>
+		<p><%= @deal.description %></p>
+		<% if @coupon %>
+      <% if @coupon.not_redeemed? && @deal.not_expired? %>
+        <p><%= link_to 'Redeem', coupon_url(@coupon, redeemed: true), class: 'btn btn-danger btn-large', method: :put %></p>
+      <% elsif @coupon.redeemed? %>
+        <p>Thanks for using this coupon on <%= @coupon.updated_at.strftime('%D') %></p>
+      <% else %>
+          <p>Sorry. This deal expired on <%= @deal.end_date.strftime('%D') %></p>
+      <% end %>
     <% end %>
-  <% end %>  
-</div>
 
-<div class="well">
-  <% if @deal.coupons.for_user(current_authorized_user).empty? %>
-    <p><b>Tweet out something to receive the deal:</b></p>
-    <p>Sample: <%= @deal.sample_tweet %></p>
-    <% if session[:uid] %>
-      <%= form_tag(coupons_url) do %>
-        <%= text_area_tag :tweet, "#{@deal.sample_tweet} #{deal_url(@deal, referred: true)}", class: 'span6', rows: '3' %>
-        <p class="countdown">140</p>
-        <p><%= submit_tag 'Tweet', class: 'btn btn-primary btn-large', id: 'tweet_button' %></p>
+    <% if @deal.coupons.for_user(current_authorized_user).empty? %>
+      <p><b>Tweet out something to receive the deal:</b></p>
+      <p>Sample: <%= @deal.sample_tweet %></p>
+      <% if session[:uid] %>
+        <%= form_tag(coupons_url) do %>
+          <%= text_area_tag :tweet, "#{@deal.sample_tweet} #{deal_url(@deal, referred: true)}", rows: '3', cols: '50' %>
+          <p><span class="countdown">140</span><%= submit_tag 'Tweet', class: 'btn btn-primary btn-large', id: 'tweet_button' %></p>
+        <% end %>
+      <% else %>
+        <p><%= link_to 'Tweet to get this Deal', '/auth/twitter', class: 'tweet_btn' %></p>
       <% end %>
     <% else %>
-      <p><%= link_to 'Sign in to Twitter', '/auth/twitter' %></p>
+      <p>Conversation:</p>
+      <% @deal.coupons.each do |coupon| %>
+        <p><%= @coupon.tweet %> by <%= coupon.user.username %></p>
+      <% end %>
     <% end %>
-  <% else %>
-    <p>Conversation:</p>
-    <% @deal.coupons.each do |coupon| %>
-      <p><%= @coupon.tweet %> by <%= coupon.user.username %></p>
-    <% end %>
-  <% end %>
+	</div>
 </div>
 
 <script>
 
   $(function(){
+    
+    $.backstretch("<%= image_path 'bg_coffee_shop.jpeg' %>");
+    
     $('#tweet').focus();
     
     function createSelection(start, end, field) {
@@ -64,7 +65,7 @@
         $('.countdown').css('color', 'red');
       }
       else {
-        $('.countdown').css('color', 'black');
+        $('.countdown').css('color', 'white');
       }
       if (remaining < 0){
         $('#tweet_button').attr('disabled', 'disabled');
