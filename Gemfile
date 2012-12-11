@@ -11,13 +11,10 @@ end
 
 gem 'pg'
 gem 'twitter'
-# gem 'devise'
-# gem 'tweetstream'
 gem 'omniauth-twitter'
 gem 'bourbon'
 gem 'newrelic_rpm'
 gem 'jquery-ui-rails'
-gem "best_in_place"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,6 +23,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'bootstrap-sass', '~> 2.2.1.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-fileupload-rails'
 end
 
 gem 'jquery-rails'
