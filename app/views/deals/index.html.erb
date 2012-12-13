@@ -1,37 +1,35 @@
+<div class="all_deals">
 <h1>My Deals</h1>
 
-<table class="table table-striped">
+<table class="table">
   <tr>
-    <th>Coupon text</th>
-    <th>Share URL</th>
+    <th>Coupon</th>
     <th>End date</th>
     <th>Coupons</th>
     <th>Redemptions</th>
     <th>Followers</th>
     <th></th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @deals.each do |deal| %>
   <tr>
-    <td><%= deal.id %></td>
-    <td><%= deal.coupon_text %></td>
-    <td><%= link_to deal_url(deal), deal_url(deal) %></td>
+    <td><%= link_to deal.coupon_text, deal_url(deal) %></td>
     <td><%= deal.end_date.strftime('%D') if deal.end_date %></td>
     <td><%= deal.coupons.length %></td>
     <td><%= deal.redemptions %></td>
     <td><%= deal.followers %></td>
     <td><%= link_to 'Stats', deal_stats_url(deal) %></td>
-    <td><%= link_to 'Show', deal %></td>
     <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
-    <td><%= link_to 'X', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
+
+</div>
 <%= link_to 'New Deal', new_deal_path %>
 
+
+
 <script>
-  $.backstretch("<%= image_path 'bg_dark_bar.jpg' %>");
+  $.backstretch("<%= image_path 'bg_coffee_shop.jpeg' %>");
 </script>
