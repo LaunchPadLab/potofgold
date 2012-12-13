@@ -3,6 +3,7 @@ class Advertiser < ActiveRecord::Base
   
   #Associations
   has_many :deals
+  has_many :images
   
   #Class Method
   def self.find_or_create_from_auth_hash(auth_hash)

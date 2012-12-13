@@ -17,7 +17,7 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.json
   def show
-    @deal = Deal.find(params[:id], include: [:advertiser, :coupons, :users])
+    @deal = Deal.find(params[:id], include: [:advertiser, :coupons, :users, :image])
     session[:referred] = true if params[:referred]
     session[:deal_id] = @deal.id unless current_authorized_user
     @coupon = @deal.coupons.for_user(current_authorized_user).first
