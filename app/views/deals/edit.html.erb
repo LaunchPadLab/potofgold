@@ -1,19 +1,20 @@
-<p>Want to change this background image? Click <%= link_to 'here', '', id: 'background_image_link' %></p>
-<div id="background_image_form" class="hide">
-  <p><span class="pull-left">Select your background image</span>
-  <%= s3_uploader_form post: images_url, as: "image[image_url]" do %>
-    <%= file_field_tag :file, multiple: true %>
-  <% end %>
-  </p>
+<div class="background_image_form_container">
+  <p>Want to change this background image? Click <%= link_to 'here', '', id: 'background_image_link' %></p>
+  <div id="background_image_form" class="hide">
+    <p><span class="pull-left">Select your background image</span>
+    <%= s3_uploader_form post: images_url, as: "image[image_url]" do %>
+      <%= file_field_tag :file, multiple: true %>
+    <% end %>
+    </p>
 
-  <script id="template-upload" type="text/x-tmpl">
-    <div class="upload">
-      {%=o.name%}
-      <div class="progress"><div class="bar" style="width: 0%"></div></div>
-    </div>
-  </script>
+    <script id="template-upload" type="text/x-tmpl">
+      <div class="upload">
+        {%=o.name%}
+        <div class="progress"><div class="bar" style="width: 0%"></div></div>
+      </div>
+    </script>
+  </div>
 </div>
-
 <div class="deal_container">
 	<div class="deal_inner">
     <h1><%= current_authorized_user.business_name %></h1>
