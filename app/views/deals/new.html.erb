@@ -21,35 +21,7 @@
 <div class="deal_container hide">
 	<div class="deal_inner">
     <h1><%= current_authorized_user.business_name %></h1>
-
-    <%= form_for(@deal) do |f| %>
-      <% if @deal.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@deal.errors.count, "error") %> prohibited this deal from being saved:</h2>
-          <ul>
-          <% @deal.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <div class="field">
-        <%= f.text_field :coupon_text, class: 'offer_text', placeholder: 'Enter offer text' %>
-      </div>
-      <div class="field">
-        <%= f.text_area :description, rows: '6', class: 'deal_description', placeholder: 'Enter deal description' %>
-      </div>
-      <div class="field">
-        <%= f.text_field :end_date, placeholder: 'Select an end date', class: 'deal_end_date' %>
-      </div>
-      <div class="field">
-        <%= f.text_area :sample_tweet, rows: '6', class: 'deal_description', placeholder: 'Enter sample tweet' %>
-      </div>
-      <%= f.hidden_field :image_id %>
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-    <% end %>
+    <%= render 'form' %>
 	</div>
 </div>
 

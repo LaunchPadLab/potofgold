@@ -1,8 +1,38 @@
-<h1>Editing deal</h1>
+<p>Want to change this background image? Click <%= link_to 'here', '', id: 'background_image_link' %></p>
+<div id="background_image_form" class="hide">
+  <p><span class="pull-left">Select your background image</span>
+  <%= s3_uploader_form post: images_url, as: "image[image_url]" do %>
+    <%= file_field_tag :file, multiple: true %>
+  <% end %>
+  </p>
 
-<%= render 'form' %>
+  <script id="template-upload" type="text/x-tmpl">
+    <div class="upload">
+      {%=o.name%}
+      <div class="progress"><div class="bar" style="width: 0%"></div></div>
+    </div>
+  </script>
+</div>
 
-<%= link_to 'Show', @deal %> |
-<%= link_to 'cancel', deals_path %>
+<div class="deal_container">
+	<div class="deal_inner">
+    <h1><%= current_authorized_user.business_name %></h1>
+    <%= render 'form' %>
+	</div>
+</div>
 
-<%= link_to 'Delete this deal', deal, method: :delete, data: { confirm: 'Are you sure you want to delete this deal?' } %>
+<script>
+  
+  $(function(){
+
+    $.backstretch("<%= @deal.image.image_url %>");
+    $("#deal_end_date").datepicker({ dateFormat: 'yy-mm-dd', constrainInput: true, minDate: new Date(), defaultDate: '<%= @deal.end_date.strftime("%Y-%-m-%-e") %>' });
+    
+    $('#background_image_link').click(function(){
+      $('#background_image_form').slideDown();
+      return false;
+    });
+
+  });
+  
+</script>
