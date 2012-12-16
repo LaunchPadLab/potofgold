@@ -1,6 +1,8 @@
 <div class="background_container">
 
-<h1>Help Your Fans Spread the Word</h1>
+<header>
+	<h1 id="headline">Help Your Fans Spread the Word</h1>
+</header>
 
 <% if current_authorized_user %>
 	@<%= current_authorized_user.username %> | <%= link_to 'Sign Out', signout_url, method: :delete %>
@@ -19,5 +21,7 @@
       , "<%= asset_path 'bg_donut.jpg' %>"
       , "<%= asset_path 'bg_goose_island.jpg' %>"
     ], {duration: 3000, fade: 750});
+
+	$("#headline").fitText();
 
 </script>
