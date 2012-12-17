@@ -60,6 +60,7 @@ class DealsController < ApplicationController
   # GET /deals/1/edit
   def edit
     @deal = Deal.find(params[:id])
+    @images = current_authorized_user.images
   end
 
   # POST /deals
