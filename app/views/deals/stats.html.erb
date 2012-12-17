@@ -1,19 +1,21 @@
-<h1>Deal: <%= @deal.id %></h1>
-<p><%= @deal.coupon_text %></p>
-<div class="row span12">
-  <div class="well span2">
-    <p>Conversion:</p>
-    <p class="percentage"><b><%= number_to_percentage(@deal.conversion, precision: 0) %></b></p>
-    <p><%= @deal.coupons.redeemed.length %> / <%= @deal.coupons.length %></p>
-    <br/>
-    <p>Seen by:</p>
-    <p class="followers"><b><%= @deal.followers %></b></p>
-    <p>people</p>
-    <br/>
-    <p>Referrals:</p>
-    <p class="followers"><b><%= @deal.referrals %></b></p>
-  </div>
-  <div class="well span8">
-    <%= high_chart("Followers", @h) %>
+<div class="deal_stats">
+  <h2>Deal: <%= @deal.id %></h2>
+  <p><%= @deal.coupon_text %></p>
+  <div class="row span12">
+    <div class="well span2">
+      <p>Conversion:</p>
+      <p class="percentage"><b><%= number_to_percentage(@deal.conversion, precision: 0) %></b></p>
+      <p><%= @deal.coupons.redeemed.length %> / <%= @deal.coupons.length %></p>
+      <br/>
+      <p>Seen by:</p>
+      <p class="followers"><b><%= @deal.followers %></b></p>
+      <p>people</p>
+      <br/>
+      <p>Referrals:</p>
+      <p class="followers"><b><%= @deal.referrals %></b></p>
+    </div>
+    <div class="well span8">
+      <%= high_chart("Followers", @h) %>
+    </div>
   </div>
 </div>
