@@ -20,10 +20,19 @@
 </div>
 
 <div class="deal_container hide">
-	<div class="deal_inner">
+	<div class="deal_inner deal_details">
     <h1><%= current_authorized_user.business_name %></h1>
     <%= render 'form' %>
 	</div>
+	<div class="deal_inner hide deal_starter_tweet">
+	  <p>Congrats! Let's start this deal off with an awesome tweet.</p>
+	  <%= form_tag(tweet_url) do %>
+      <%= text_area_tag :tweet, "#{root_url}deals/", rows: '6', class: 'deal_description', placeholder: 'Enter starter tweet' %>
+      <p><span class="countdown">140</span>
+      <%= submit_tag 'Tweet to start the deal!', class: 'btn btn-primary btn-large', id: 'tweet_button' %>
+      </p>
+    <% end %>
+  </div>
 </div>
 
 <script>
@@ -37,6 +46,49 @@
     
     $('#myModal').modal('show');
     $("#deal_end_date").datepicker({ dateFormat: 'yy-mm-dd', constrainInput: true, minDate: new Date() });
+    
+    $('#new_deal').submit(function(){
+      $.ajax({ type: 'POST', url: '<%= j(deals_url) %>', 
+          data: { deal: { coupon_text: $('#deal_coupon_text').val(),
+                  description: $('#deal_description').val(),
+                  end_date: $('#deal_end_date').val(),
+                  sample_tweet: $('#deal_sample_tweet').val(), 
+                  image_id: $('#deal_image_id').val() } 
+                }, 
+          success: function(data){
+            var val = $('#tweet').val();
+            $('#tweet').val(val + data['id']);
+            $('.deal_details').slideUp();
+            $('.deal_starter_tweet').slideDown();
+            $('#tweet').focus();
+          },
+          error: function(data){ 
+            alert('Something went wrong!');
+          }, 
+      dataType: 'json'});      
+      return false;
+    });
+    
+    function updateCountdown() {
+      // 140 is the max message length
+      var remaining = 140 - $('#tweet').val().length;
+      if (remaining <= 10){
+        $('.countdown').css('color', 'red');
+      }
+      else {
+        $('.countdown').css('color', 'white');
+      }
+      if (remaining < 0){
+        $('#tweet_button').attr('disabled', true);
+      }
+      else {
+        $('#tweet_button').attr('disabled', false);
+      }
+      $('.countdown').text(remaining);
+    }
+    updateCountdown();
+    $('#tweet').change(updateCountdown);
+    $('#tweet').keyup(updateCountdown);
 
   });
   
