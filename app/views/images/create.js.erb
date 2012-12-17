@@ -1,5 +1,5 @@
 $('.backstretch').remove();
 $.backstretch("<%= j(@image.image_url) %>");
-$('.deal_container').slideDown('slow').delay(1000);
+$('.deal_container').delay(1000).slideDown('slow');
 $('#deal_image_id').val('<%= @image.id %>');
 $('#background_image_form').slideUp();

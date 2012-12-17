@@ -49,6 +49,7 @@ class DealsController < ApplicationController
   # GET /deals/new.json
   def new
     @deal = Deal.new
+    @images = current_authorized_user.images
 
     respond_to do |format|
       format.html # new.html.erb
