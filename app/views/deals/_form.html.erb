@@ -10,12 +10,13 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.text_field :coupon_text, class: 'offer_text', placeholder: 'Enter offer text' %>
+    <%= f.text_field :coupon_text, class: 'offer_text', placeholder: 'Enter your offer' %>
   </div>
   <div class="field">
-    <%= f.text_area :description, rows: '6', class: 'deal_description', placeholder: 'Enter deal description' %>
+    <%= f.text_area :description, rows: '6', class: 'deal_description', placeholder: 'Enter a description of your deal' %>
   </div>
   <div class="field">
+    <br>
     <%= f.text_field :end_date, placeholder: 'Select an end date', class: 'deal_end_date' %>
   </div>
   <div class="field">

@@ -2,12 +2,10 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-body">
     <h3 id="myModalLabel">Let's start a new deal</h3>
-    <p><span class="pull-left">Select your background image </span>
-      <span class="pull-right">
+    <p>Select your background image:</p>
         <%= s3_uploader_form post: images_url, as: "image[image_url]" do %>
           <%= file_field_tag :file, multiple: true %>
         <% end %>
-      </span>
     <script id="template-upload" type="text/x-tmpl">
       <div class="upload">
         {%=o.name%}
@@ -16,9 +14,9 @@
     </script>
     </p>
     <% if @images.any? %>
-      <p>Or pick from some you have already uploaded.</p>
+      <p>Or use a picture you've already uploaded:</p>
     <% else %>
-      <p>Don't have a great image? No worries. Pick from some of our great ones!</p>
+      <p>Don't have a great pic? No worries. Use one of ours.</p>
     <% end %>
     <ul class="images_to_select">
       <% if @images.any? %>
@@ -28,7 +26,7 @@
             <p><%= link_to 'Preview', '#', class: 'preview' %> | <%= link_to 'Select', '#', class: 'select' %></p>
           </li>
         <% end %>
-        <p>Don't have a great image? No worries. Pick from some of our great ones!</p>
+        <p>Don't have a great pic? No worries. Use one of ours.</p>
         <li>
           <%= image_tag 'bg_bar2.jpg', id: 'bg_image_1' %>
           <p><%= link_to 'Preview', '#', class: 'preview' %> | <%= link_to 'Select', '#', class: 'select' %></p>
@@ -51,24 +49,24 @@
 </div>
 
 <script>
-  
+
   $(function(){
-    
+
     $('#myModal').modal({
       backdrop: 'static',
       keyboard: true
     });
-    
+
     $('#myModal').modal('show');
     $("#deal_end_date").datepicker({ dateFormat: 'yy-mm-dd', constrainInput: true, minDate: new Date() });
-    
+
     $('.preview').click(function(){
       $('.backstretch').remove();
       var url = $(this).parent().parent().children(':first-child').attr('src');
       $.backstretch(url);
       return false;
     });
-    
+
     $('.select').click(function(){
       $('.backstretch').remove();
       var url = $(this).parent().parent().children(':first-child').attr('src');
@@ -81,5 +79,5 @@
     });
 
   });
-  
+
 </script>
