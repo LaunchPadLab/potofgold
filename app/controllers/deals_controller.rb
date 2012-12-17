@@ -79,7 +79,7 @@ class DealsController < ApplicationController
   
   # POST /tweet
   def tweet
-    TwitterMessaging.new(session[:token], session[:secret]).send_tweet(params[:tweet])
+    #TwitterMessaging.new(session[:token], session[:secret]).send_tweet(params[:tweet])
     
     redirect_to deals_url, notice: 'You just started a new deal. Good luck!'
     
