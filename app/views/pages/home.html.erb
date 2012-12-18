@@ -1,8 +1,10 @@
 <div class="background_container">
+  <%= image_tag('podcast.svg') %>
 
-<%= image_tag('podcast.svg') %>
 
-<h1>Help Your Fans Spread the Word</h1>
+<h1>
+  Help Your Fans Spread the Word
+</h1>
 
 <% if current_authorized_user %>
 	@<%= current_authorized_user.username %> | <%= link_to 'Sign Out', signout_url, method: :delete %>
