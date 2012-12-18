@@ -43,6 +43,10 @@ header
 	.logo
 		float: left
 		line-height: 40px
+		@include transition (all 0.5s ease-in-out)
+		&:hover
+			color: #f05e1b
+			text-decoration: none
 	ul
 		float: right
 		list-style-type: none
@@ -75,3 +79,14 @@ body.home
 		&:hover
 			background-color: #eee
 			text-decoration: none
+.background_container
+	margin-top: 20px
+	img
+		background-color: rgba(0, 0, 0, 0.75)
+		padding: 10px
+		@include border-radius(0 0 6px 6px)
+		position: absolute
+		top: 0
+		@include transition (all 1.0s ease-in-out)
+		&:hover
+			background-color: rgba(240, 94, 27, 0.75)
