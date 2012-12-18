@@ -15,7 +15,6 @@
 //= require highcharts
 //= require jquery.backstretch.min
 //= require jquery.ui.datepicker
-//= require bootstrap
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require_tree .

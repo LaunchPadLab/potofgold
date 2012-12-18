@@ -23,28 +23,3 @@
     </li>
   <% end %>
 </ul>
-
-<script>
-
-  $(function(){
-    $('.preview').click(function(){
-      $('.backstretch').remove();
-      var url = $(this).parent().parent().children(':first-child').attr('src');
-      $.backstretch(url);
-      return false;
-    });
-    
-    $('.select').click(function(){
-      $('.backstretch').remove();
-      var url = $(this).parent().parent().children(':first-child').attr('src');
-      var image_id = $(this).parent().parent().children(':first-child').attr('id').toString().match(/\d+/)[0];
-      $.backstretch(url);
-      $('#myModal').modal('hide');
-      $('#background_image_form').slideUp();
-      $('.deal_container').delay(1000).slideDown('slow');
-      $('#deal_image_id').val(image_id);
-      return false;
-    });
-  });
-
-</script>
