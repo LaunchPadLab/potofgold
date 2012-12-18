@@ -3,6 +3,7 @@
 <header>
 	<h1 id="headline">Help Your Fans Spread the Word</h1>
 </header>
+<%= image_tag('podcast.svg') %>
 
 <% if current_authorized_user %>
 	@<%= current_authorized_user.username %> | <%= link_to 'Sign Out', signout_url, method: :delete %>

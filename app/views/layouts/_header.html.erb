@@ -1,6 +1,6 @@
 <div class="navigation">
   <div class="navigation-inner container">
-    <%= link_to 'Pot of Gold', root_url, class: 'logo' %>
+    <%= link_to "amped #{image_tag('podcast.svg', style: 'width: 30px;')}".html_safe, root_url, class: 'logo' %>
     <ul class="navigation-links">
       <li class="twitter_handle">@<%= current_authorized_user.username %></li>
       <% if current_authorized_user.class.name.include?("Advertiser") %>

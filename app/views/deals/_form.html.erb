@@ -9,14 +9,13 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+  <div class="field offer">
     <%= f.text_field :coupon_text, class: 'offer_text', placeholder: 'Enter your offer' %>
   </div>
-  <div class="field">
+  <div class="field description">
     <%= f.text_area :description, rows: '6', class: 'deal_description', placeholder: 'Enter a description of your deal' %>
   </div>
-  <div class="field">
-    <br>
+  <div class="field date">
     <%= f.text_field :end_date, placeholder: 'Select an end date', class: 'deal_end_date' %>
   </div>
   <div class="field">
@@ -24,6 +23,6 @@
   </div>
   <%= f.hidden_field :image_id %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Start Deal' %>
   </div>
 <% end %>

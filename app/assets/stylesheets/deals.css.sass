@@ -75,6 +75,7 @@
 		color: #F05E1B
 	a.btn
 		color: #fff
+		background-color: #777
 
 .deal_stats
 	color: #444
@@ -107,31 +108,37 @@
 			color: black
 
 .offer_text
-	color: #f05e1b !important
-	background-color: transparent !important
-	border: none !important
+	font-family: adelle, sans-serif
+	background-color: #222
+	background-color: rgba(0, 0, 0, 0.16)
+	color: #f05e1b
 	font-weight: 400
-	font-style: italic !important
 	text-align: center
-	font-size: 1.5em !important
-	padding: 5px 20px
-	display: inline-block
-	margin: 30px 0 10px 0
-	height: 40px !important
-	width: 550px !important
-	font: normal 100% "freight-sans-pro", sans-serif
+	padding: 10px
+	margin: 30px 0
+
+.offer
+	input[type="text"]
+		color: #f05e1b
+		font-size: 1.5em
+
+.deals
+	input[type="text"]
+		height: 40px
+		width: 550px
+		line-height: 40px
 .offer_text::-webkit-input-placeholder
 	color: #f05e1b !important
 .offer_text:-moz-placeholder
 	color: #f05e1b !important
 
 .deal_description
-	background-color: transparent !important
-	border: none !important
+	border: none
+	box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.06)
 	text-align: left
 	font-size: 1.375em
 	font-weight: 300
-	padding: 5px 20px
+	padding: 10px
 	display: inline-block
 	margin: 10px 0
 	color: white
@@ -142,15 +149,18 @@
 	color: white !important
 
 .deal_end_date
-	background-color: transparent !important
-	border: none !important
 	color: white
-	text-align: center
-	font: normal 100% "freight-sans-pro", sans-serif
+	text-align: left
 .deal_end_date::-webkit-input-placeholder
 	color: white !important
 .deal_end_date:-moz-placeholder
 	color: white !important
+
+.date
+	input[type="text"]
+		color: #fff
+		font-weight: 300
+		font-size: 1.375em
 
 #file
 	color: white
@@ -158,12 +168,37 @@
 
 .new_deal
 	.field
-		border: 1px dotted #fff
 		text-align: left
 		margin: 10px 0
+		border: none
+		color: white
+	input[type="text"]
+		background-color: #222
+		background-color: rgba(0, 0, 0, 0.65)
+		border: none
+	textarea
+		background-color: #222
+		background-color: rgba(0, 0, 0, 0.65)
+		border: none
+	textarea:focus, input[type="text"]:focus
+		background-color: #111
+		background: rgba(0, 0, 0, 0.85)
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(225, 225, 225, 0.85)
 
-select, textarea, input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], .uneditable-input
-	font-size: 26px
+input, button, select, textarea
+	font-family: "freight-sans-pro", sans-serif
+
+input[type="submit"]
+	padding: 21px 30px
+	line-height: 1em
+	font-size: 22px
+	color: #fff
+	background-color: #f05e1b
+	border: none
+	@include border-radius(6px)
+	&:hover
+		background-color: #cb5017
+		text-decoration: none
 
 // Deal Edit
 .background_image_form_container
