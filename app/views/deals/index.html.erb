@@ -2,7 +2,6 @@
   <h2>My Deals
     <%= link_to 'New Deal', new_deal_path, class: 'btn btn-success pull-right' %>
   </h2>
-
   <table class="table">
     <tr>
       <th>Coupon</th>
@@ -10,7 +9,6 @@
       <th>Coupons</th>
       <th>Redemptions</th>
       <th>Followers</th>
-      <th></th>
       <th></th>
     </tr>
 
@@ -20,8 +18,13 @@
       <td><%= deal.end_date.strftime('%D') if deal.end_date %></td>
       <td><%= deal.coupons.length %></td>
       <td><%= deal.redemptions %></td>
-      <td><%= deal.followers %></td>
-      <td><%= link_to 'Stats', deal_stats_url(deal) %></td>
+      <td>
+        <div class="progress">
+          <div class="bar" style="width: 25%;">
+            <%= deal.followers %>
+          </div>
+        </div>
+      </td>
       <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
     </tr>
   <% end %>
