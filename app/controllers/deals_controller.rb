@@ -6,7 +6,7 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
   def index
-    @deals = current_authorized_user.deals.includes(:coupons)
+    @deals = current_authorized_user.deals.includes(:coupons).order('end_date ASC')
 
     respond_to do |format|
       format.html # index.html.erb
