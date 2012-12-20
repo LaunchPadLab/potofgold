@@ -11,7 +11,11 @@ class SessionsController < ApplicationController
       redirect_to deal_url(@deal)
     else
       @advertiser = Advertiser.find_or_create_from_auth_hash(auth_hash)
-      redirect_to deals_url
+      if @advertiser.deals.any?
+        redirect_to deals_url
+      else
+        redirect_to new_deal_url
+      end
     end
   end
   

@@ -12,6 +12,7 @@ class Advertiser < ActiveRecord::Base
       advertiser = self.create(image_url: auth_hash['info']['image'], uid: auth_hash['uid'], 
                               username: auth_hash['info']['nickname'], business_name: auth_hash['info']['name'])
     end
+    advertiser
   end
   
 end
