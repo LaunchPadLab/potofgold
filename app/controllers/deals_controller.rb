@@ -1,7 +1,6 @@
 class DealsController < ApplicationController
 
-  def mydeal
-  end
+  before_filter :check_current_authorized_user_is_an_advertiser, except: [:show]
 
   # GET /deals
   # GET /deals.json
@@ -113,4 +112,11 @@ class DealsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def check_current_authorized_user_is_an_advertiser
+      redirect_to root_url unless current_authorized_user.advertiser? 
+    end
+
 end

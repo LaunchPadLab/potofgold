@@ -2,13 +2,9 @@ Potofgold::Application.routes.draw do
 
   resources :images
 
-  resources :users
-
   resources :coupons
 
   resources :deals
-
-  resources :advertisers
 
   root :to => 'pages#home'
   get '/auth/twitter/callback' => 'sessions#create'
@@ -18,7 +14,5 @@ Potofgold::Application.routes.draw do
   get 'advertiser_sign_in' => 'sessions#advertiser_sign_in'
 
   post '/redeem/:id' => 'coupons#redeem', as: :redeem
-
-  get 'mydeal' => 'deals#deal', as: :mydeal
 
 end

@@ -1,4 +1,7 @@
 class CouponsController < ApplicationController
+
+  before_filter :check_current_authorized_user_is_a_customer
+
   # GET /coupons
   # GET /coupons.json
   def index
@@ -85,4 +88,11 @@ class CouponsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def check_current_authorized_user_is_a_customer
+      redirect_to root_url unless current_authorized_user.user? 
+    end
+
 end
