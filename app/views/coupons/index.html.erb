@@ -1,22 +1,22 @@
-<h1>My Coupons</h1>
+<div class="all_deals">
+  <h2>My Coupons</h2>
 
-<table class="table table-striped">
-  <tr>
-    <th>ID</th>
-    <th>Deal Text</th>
-    <th>Expires On</th>
-    <th>Redeemed</th>
-    <th></th>
-  </tr>
+  <table class="table table-striped">
+    <tr>
+      <th>Deal Text</th>
+      <th>Expires On</th>
+      <th>Redeemed</th>
+      <th></th>
+    </tr>
 
-<% @coupons.each do |coupon| %>
-  <tr>
-    <td><%= coupon.id %>
-    <td><%= coupon.deal.coupon_text %></td>
-    <td><%= coupon.deal.end_date.strftime('%D') %></td>
-    <td><%= coupon.redeemed %></td>
-    <td><%= link_to 'View', coupon.deal %></td>
-  </tr>
-<% end %>
+  <% @coupons.each do |coupon| %>
+    <tr>
+      <td><%= coupon.deal.coupon_text %></td>
+      <td><%= coupon.deal.end_date.strftime('%D') %></td>
+      <td><%= print_redeemed(coupon.redeemed) %></td>
+      <td><%= link_to 'View', coupon.deal %></td>
+    </tr>
+  <% end %>
 
-</table>
+  </table>
+</div>

@@ -3,13 +3,14 @@
 		<h1><%= @deal.advertiser.business_name %></h1>
 		<h2><%= @deal.coupon_text %></h2>
 		<p><%= @deal.description %></p>
+    <p>Expires on <%= @deal.end_date.strftime('%D') %></p>
 		<% if @coupon %>
       <% if @coupon.not_redeemed? && @deal.not_expired? %>
         <p><%= link_to 'Redeem', coupon_url(@coupon, redeemed: true), class: 'btn btn-danger btn-large', method: :put %></p>
       <% elsif @coupon.redeemed? %>
         <p>Thanks for using this coupon on <%= @coupon.updated_at.strftime('%D') %></p>
       <% else %>
-          <p>Sorry. This deal expired on <%= @deal.end_date.strftime('%D') %></p>
+        <p>Sorry. This deal expired on <%= @deal.end_date.strftime('%D') %></p>
       <% end %>
     <% end %>
 
@@ -25,10 +26,10 @@
         <p><%= link_to 'Tweet to get this Deal', '/auth/twitter', class: 'tweet_btn' %></p>
       <% end %>
     <% else %>
-      <p>Conversation:</p>
-      <% @deal.coupons.each do |coupon| %>
-        <p><%= @coupon.tweet %> by <%= coupon.user.username %></p>
-      <% end %>
+<!--       <p>Conversation:</p>
+      <%# @deal.coupons.each do |coupon| %>
+        <p><%#= @coupon.tweet %> by <%#= coupon.user.username %></p>
+      <%# end %> -->
     <% end %>
 	</div>
 </div>

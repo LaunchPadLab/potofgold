@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     session[:uid] = auth_hash['uid']
     if session[:advertiser]
       @advertiser = Advertiser.find_or_create_from_auth_hash(auth_hash)
+      session[:user_id] = @advertiser.id
       if @advertiser.deals.any?
         redirect_to deals_url
       else
@@ -14,11 +15,12 @@ class SessionsController < ApplicationController
       end
     else
       @user = User.find_or_create_from_auth_hash(auth_hash)
+      session[:user_id] = @user.id
       if session[:deal_id]
         @deal = Deal.find_by_id(session[:deal_id])
         redirect_to deal_url(@deal)
       else
-        redirect_to deals_url
+        redirect_to coupons_url
       end
     end
   end

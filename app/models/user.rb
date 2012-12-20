@@ -13,5 +13,15 @@ class User < ActiveRecord::Base
     end
     return user
   end
+
+  #Instance Method
+
+  def advertiser?
+    false
+  end
+
+  def user?
+    true
+  end
   
 end

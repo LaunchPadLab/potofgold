@@ -14,5 +14,15 @@ class Advertiser < ActiveRecord::Base
     end
     advertiser
   end
+
+  #Instance Method
+
+  def advertiser?
+    true
+  end
+
+  def user?
+    false
+  end
   
 end
