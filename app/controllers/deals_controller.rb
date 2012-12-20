@@ -7,6 +7,7 @@ class DealsController < ApplicationController
   # GET /deals.json
   def index
     @deals = current_authorized_user.deals.includes(:coupons).order('end_date ASC')
+    @deals_total_followers = @deals.map { |d| d.followers }.total
 
     respond_to do |format|
       format.html # index.html.erb

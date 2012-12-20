@@ -5,26 +5,29 @@
   <table class="table">
     <tr>
       <th>Coupon</th>
+      <th>Twitter Reach</th>
+      <th>Coupons Earned</th>
+      <th>Coupons Redeemed</th>
+      <th>% Redeemed</th>
       <th>End date</th>
-      <th>Coupons</th>
-      <th>Redemptions</th>
-      <th>Followers</th>
       <th></th>
     </tr>
 
   <% @deals.each do |deal| %>
     <tr>
       <td><%= link_to deal.coupon_text, deal_url(deal) %></td>
-      <td><%= deal.end_date.strftime('%D') if deal.end_date %></td>
+      <td>
+        <%= deal.followers %>
+        <!-- <div class="progress">
+          <div class="bar" style="width: <%#=  number_to_percentage((deal.followers / @deals_total_followers) * 100) %>%;">
+            <p></p>
+          </div>
+        </div> -->
+      </td>
       <td><%= deal.coupons.length %></td>
       <td><%= deal.redemptions %></td>
-      <td>
-        <div class="progress">
-          <div class="bar" style="width: 25%;">
-            <%= deal.followers %>
-          </div>
-        </div>
-      </td>
+      <td><%= number_to_percentage(deal.conversion, precision: 0) %></td>
+      <td><%= deal.end_date.strftime('%D') if deal.end_date %></td>
       <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
     </tr>
   <% end %>
