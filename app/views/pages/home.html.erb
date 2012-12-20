@@ -1,14 +1,14 @@
 <div class="background_container">
   <%= image_tag('podcast.svg') %>
-
+  <p class="sign_in">Are you a business? Sign in <%= link_to 'here', '/advertiser_sign_in' %>.</p>
 <header>
-	<h1 id="headline">Help Your Fans Spread the Word</h1>
+	<h1 id="headline">Get your coupons</h1>
 </header>
 
 <% if current_authorized_user %>
-	@<%= current_authorized_user.username %> | <%= link_to 'Sign Out', signout_url, method: :delete %>
+	<p>@<%= current_authorized_user.username %> | <%= link_to 'Sign Out', signout_url, method: :delete %></p>
 <% else %>
-	<%= link_to 'Sign in with Twitter', '/auth/twitter', class: 'signin_btn' %>
+	<p><%= link_to 'Sign in with Twitter', '/auth/twitter', class: 'signin_btn' %></p>
 <% end %>
 
 </div>

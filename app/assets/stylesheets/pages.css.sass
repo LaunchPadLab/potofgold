@@ -84,11 +84,21 @@ body.home
 			text-decoration: none
 .background_container
 	margin-top: 20px
+	p.sign_in
+		background-color: rgba(0, 0, 0, 0.75)
+		padding: 10px
+		@include border-radius(0 0 6px 6px)
+		position: fixed
+		top: 0
+		right: 200px
+		@include transition (all 1.0s ease-in-out)
+		&:hover
+			background-color: rgba(240, 94, 27, 0.75)	
 	img
 		background-color: rgba(0, 0, 0, 0.75)
 		padding: 10px
 		@include border-radius(0 0 6px 6px)
-		position: absolute
+		position: fixed
 		top: 0
 		@include transition (all 1.0s ease-in-out)
 		&:hover

@@ -5,7 +5,7 @@ class AuthorizedUser
   end
   
   def current_authorized_user
-   Advertiser.find_by_uid(@uid) || User.find_by_uid(@uid)
+   User.find_by_uid(@uid) || Advertiser.find_by_uid(@uid)
   end
     
 end

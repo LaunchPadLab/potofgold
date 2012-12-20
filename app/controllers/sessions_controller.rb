@@ -5,18 +5,27 @@ class SessionsController < ApplicationController
     session[:secret] = auth_hash['credentials']['secret']
     session[:user_name] = auth_hash['info']['nickname']
     session[:uid] = auth_hash['uid']
-    if session[:deal_id]
-      @user = User.find_or_create_from_auth_hash(auth_hash)
-      @deal = Deal.find_by_id(session[:deal_id])
-      redirect_to deal_url(@deal)
-    else
+    if session[:advertiser]
       @advertiser = Advertiser.find_or_create_from_auth_hash(auth_hash)
       if @advertiser.deals.any?
         redirect_to deals_url
       else
         redirect_to new_deal_url
       end
+    else
+      @user = User.find_or_create_from_auth_hash(auth_hash)
+      if session[:deal_id]
+        @deal = Deal.find_by_id(session[:deal_id])
+        redirect_to deal_url(@deal)
+      else
+        redirect_to deals_url
+      end
     end
+  end
+
+  def advertiser_sign_in
+    session[:advertiser] = true
+    redirect_to '/auth/twitter'
   end
   
   def destroy
