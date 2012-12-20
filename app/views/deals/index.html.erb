@@ -1,35 +1,30 @@
 <div class="all_deals">
-<h2>My Deals</h2>
+  <h2>My Deals
+    <%= link_to 'New Deal', new_deal_path, class: 'btn btn-success pull-right' %>
+  </h2>
 
-<table class="table">
-  <tr>
-    <th>Coupon</th>
-    <th>End date</th>
-    <th>Coupons</th>
-    <th>Redemptions</th>
-    <th>Followers</th>
-    <th></th>
-    <th></th>
-  </tr>
+  <table class="table">
+    <tr>
+      <th>Coupon</th>
+      <th>End date</th>
+      <th>Coupons</th>
+      <th>Redemptions</th>
+      <th>Followers</th>
+      <th></th>
+      <th></th>
+    </tr>
 
-<% @deals.each do |deal| %>
-  <tr>
-    <td><%= link_to deal.coupon_text, deal_url(deal) %></td>
-    <td><%= deal.end_date.strftime('%D') if deal.end_date %></td>
-    <td><%= deal.coupons.length %></td>
-    <td><%= deal.redemptions %></td>
-    <td><%= deal.followers %></td>
-    <td><%= link_to 'Stats', deal_stats_url(deal) %></td>
-    <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
-  </tr>
-<% end %>
-</table>
+  <% @deals.each do |deal| %>
+    <tr>
+      <td><%= link_to deal.coupon_text, deal_url(deal) %></td>
+      <td><%= deal.end_date.strftime('%D') if deal.end_date %></td>
+      <td><%= deal.coupons.length %></td>
+      <td><%= deal.redemptions %></td>
+      <td><%= deal.followers %></td>
+      <td><%= link_to 'Stats', deal_stats_url(deal) %></td>
+      <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
+    </tr>
+  <% end %>
+  </table>
 
-<%= link_to 'New Deal', new_deal_path, class: 'btn btn-success' %>
 </div>
-
-
-
-<script>
-  // $.backstretch("<%= image_path 'bg_coffee_shop.jpeg' %>");
-</script>
