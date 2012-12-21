@@ -3,11 +3,12 @@
 </div>
 
 <div class="deal_container">
-    <div class="background_image_selection">
+  <div class="background_image_selection">
     <h3 id="myModalLabel">Let's start a new deal</h3>
-    <p>Select your background image:</p>
+    <p>Select your background image by one of the following ways:</p>
+    <ol>
         <%= s3_uploader_form post: images_url, as: "image[image_url]" do %>
-          <%= file_field_tag :file, multiple: true %>
+          <li>Upload an image: <%= file_field_tag :file, multiple: true %></li>
         <% end %>
     <script id="template-upload" type="text/x-tmpl">
       <div class="upload">
@@ -17,31 +18,26 @@
     </script>
     </p>
     <% if @images.any? %>
-      <p>Or use a picture you've already uploaded:</p>
-    <% else %>
-      <p>Don't have a great pic? No worries. Use one of ours.</p>
+      <li>Or use a picture you've already uploaded:</li>
     <% end %>
-    <ul class="images_to_select">
-      <% if @images.any? %>
-        <% @images.each do |image| %>
+      <ul class="images_to_select clear">
+        <% if @images.any? %>
+          <% @images.each do |image| %>
+            <li class="pull-left">
+              <%= image_tag image.image_url, id: "bg_image_#{image.id}" %>
+              <p><%= link_to 'Preview', '#', class: 'preview' %> | <%= link_to 'Select', '#', class: 'select' %></p>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+      <li>Don't have a great pic? No worries. Use one of ours.</li>
+        <ul class="images_to_select">
           <li>
-            <%= image_tag image.image_url, id: "bg_image_#{image.id}" %>
+            <%= image_tag 'bg_bar2.jpg', id: 'bg_image_1' %>
             <p><%= link_to 'Preview', '#', class: 'preview' %> | <%= link_to 'Select', '#', class: 'select' %></p>
           </li>
-        <% end %>
-        <p>Don't have a great pic? No worries. Use one of ours.</p>
-        <li>
-          <%= image_tag 'bg_bar2.jpg', id: 'bg_image_1' %>
-          <p><%= link_to 'Preview', '#', class: 'preview' %> | <%= link_to 'Select', '#', class: 'select' %></p>
-        </li>
-      <% else %>
-        <li>
-          <%= image_tag 'bg_bar2.jpg', id: 'bg_image_1' %>
-          <p><%= link_to 'Preview', '#', class: 'preview' %> | <%= link_to 'Select', '#', class: 'select' %></p>
-        </li>
-      <% end %>
-    </ul>
-    <%= render partial: 'images', locals: { images: @images } %>
+        </ul>
+      </ol>
   </div>
   <div class="deal_details_container hide">
   	<div class="deal_inner deal_details">

@@ -1,3 +1,6 @@
+.new
+	background-color: rgba(192,192,192, 0.5)
+
 .well
 	position: relative
 
@@ -33,6 +36,7 @@
 	margin: 120px auto auto
 	text-align: center
 	background-color: rgba(0, 0, 0, 0.75)
+	padding: 10px
 	.deal_inner
 		padding: 40px 40px 60px
 	h2
@@ -96,20 +100,28 @@
 	background-color: #444
 
 .images_to_select
+	width: 100%
+	overflow: auto
 	li
 		padding: 10px
 		display: inline-block
-		border: 1px solid black
-		color: black
 		margin: 5px auto
-		background-color: rgba(128, 138, 135, 0.65)
+		width: 125px
+		height: 125px
 		img
+			padding: 5px
+			background-color: white
+			border: solid 1px #CCC
+			-moz-box-shadow: 1px 1px 5px #999
+			-webkit-box-shadow: 1px 1px 5px #999
+			box-shadow: 1px 1px 5px #999
 			max-width: 100px
+			max-height: 100px
 			margin-bottom: 10px
 		p
 			text-align: center
-		a
-			color: black
+			color: black !important
+			font-size: 16px
 
 .offer_text
 	font-family: adelle, sans-serif
