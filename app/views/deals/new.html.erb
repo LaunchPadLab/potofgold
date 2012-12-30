@@ -4,55 +4,8 @@
 
 <div class="deal_container">
   <div class="background_image_selection">
-    <h3 id="myModalLabel">Let's start a new deal</h3>
-    <p>Select your background image by one of the following ways:</p>
-    <ol>
-        <%= s3_uploader_form post: images_url, as: "image[image_url]" do %>
-          <li>Upload an image: <%= file_field_tag :file, multiple: true %></li>
-        <% end %>
-    <script id="template-upload" type="text/x-tmpl">
-      <div class="upload">
-        {%=o.name%}
-        <div class="progress"><div class="bar" style="width: 0%"></div></div>
-      </div>
-    </script>
-    </p>
-    <% if @images.any? %>
-      <li>Or use a picture you've already uploaded:</li>
-    <% end %>
-      <ul class="images_to_select clear">
-        <% if @images.any? %>
-          <% @images.each do |image| %>
-            <li class="pull-left">
-              <%= image_tag image.image_url, id: "bg_image_#{image.id}" %>
-              <p><%= link_to 'Preview', '#', class: 'preview' %> | <%= link_to 'Select', '#', class: 'select' %></p>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-      <li>Don't have a great pic? No worries. Use one of ours.</li>
-        <ul class="images_to_select">
-          <li>
-            <%= image_tag 'bg_bar2.jpg', id: 'bg_image_1' %>
-            <p><%= link_to 'Preview', '#', class: 'preview' %> | <%= link_to 'Select', '#', class: 'select' %></p>
-          </li>
-        </ul>
-      </ol>
-  </div>
-  <div class="deal_details_container hide">
-  	<div class="deal_inner deal_details">
-      <h1><%= current_authorized_user.business_name %></h1>
-      <%= render 'form' %>
-  	</div>
-  	<div class="deal_inner hide deal_starter_tweet">
-  	  <p>Congrats! Let's start this deal off with an awesome tweet.</p>
-  	  <%= form_tag(tweet_url) do %>
-        <%= text_area_tag :tweet, "#{root_url}deals/", rows: '6', class: 'deal_description', placeholder: 'Enter starter tweet' %>
-        <p><span class="countdown">140</span>
-        <%= submit_tag 'Tweet to start the deal!', class: 'btn btn-primary btn-large', id: 'tweet_button' %>
-        </p>
-      <% end %>
-    </div>
+     <h3 id="myModalLabel">Let's start a new deal</h3>
+    <%= render 'background' %>
   </div>
 </div>
 
@@ -70,10 +23,10 @@
     $("#deal_end_date").datepicker({ dateFormat: 'yy-mm-dd', constrainInput: true, minDate: new Date() });
 
     $('.preview').click(function(){
-      $('.backstretch').remove();
-      var url = $(this).parent().parent().children(':first-child').attr('src');
-      $.backstretch(url);
-      return false;
+        $('.backstretch').remove();
+        var url = $(this).parent().parent().children(':first-child').attr('src');
+        $.backstretch(url);
+        return false;
     });
 
     $('.select').click(function(){

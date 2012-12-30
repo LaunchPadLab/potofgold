@@ -1,18 +1,7 @@
 <div class="background_image_form_container">
   <p>Want to change this background image? Click <%= link_to 'here', '', id: 'background_image_link' %></p>
   <div id="background_image_form" class="hide">
-    <p><span class="pull-left">Select your background image</span>
-    <%= s3_uploader_form post: images_url, as: "image[image_url]" do %>
-      <%= file_field_tag :file, multiple: true %>
-    <% end %>
-    </p>
-    <script id="template-upload" type="text/x-tmpl">
-      <div class="upload">
-        {%=o.name%}
-        <div class="progress"><div class="bar" style="width: 0%"></div></div>
-      </div>
-    </script>
-    <%= render partial: 'images', locals: { images: @images } %>
+    <%= render 'background' %>
   </div>
 </div>
 <div class="deal_container">
@@ -31,6 +20,24 @@
     
     $('#background_image_link').click(function(){
       $('#background_image_form').slideDown();
+      return false;
+    });
+
+    $('.preview').click(function(){
+        $('.backstretch').remove();
+        var url = $(this).parent().parent().children(':first-child').attr('src');
+        $.backstretch(url);
+        return false;
+    });
+
+    $('.select').click(function(){
+      $('.backstretch').remove();
+      var url = $(this).parent().parent().children(':first-child').attr('src');
+      var image_id = $(this).parent().parent().children(':first-child').attr('id').toString().match(/\d+/)[0];
+      $.backstretch(url);
+      $('#background_image_form').slideUp();
+      $('.background_image_form_container').slideDown();
+      $('#deal_image_id').val(image_id);
       return false;
     });
 
