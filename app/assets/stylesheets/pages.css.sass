@@ -1,3 +1,5 @@
+$orange: #F05E1B
+
 //Global
 
 body
@@ -44,10 +46,6 @@ header
 		float: left
 		line-height: 40px
 		padding: 0 5px
-		@include transition (all 0.5s ease-in-out)
-		&:hover
-			background-color: rgba(240, 94, 27, 0.75)
-			text-decoration: none
 	ul
 		float: right
 		list-style-type: none
@@ -60,9 +58,8 @@ header
 			float: left
 			line-height: 40px
 		li a:hover
-			color: #f05e1b
+			color: $orange
 			text-decoration: none
-
 
 
 //Home Page
@@ -78,7 +75,7 @@ body.home
 		padding: 21px 30px
 		line-height: 1em
 		font-size: 22px
-		color: #f05e1b
+		color: $orange
 		background-color: #fff
 		@include border-radius(6px)
 		&:hover
@@ -86,16 +83,21 @@ body.home
 			text-decoration: none
 .background_container
 	margin-top: 20px
-	p.sign_in
+	a.sign_in
+		background-color: #000
 		background-color: rgba(0, 0, 0, 0.75)
 		padding: 10px
 		@include border-radius(0 0 6px 6px)
 		position: fixed
 		top: 0
 		right: 200px
-		@include transition (all 1.0s ease-in-out)
+		@include transition (all 0.2s ease-in-out)
 		&:hover
-			background-color: rgba(240, 94, 27, 0.75)	
+			color: #fff
+			background-color: $orange
+			background-color: rgba(240, 94, 27, 0.75)
+			text-decoration: none
+			@include transition (all 0.2s ease-in-out)
 	img
 		background-color: rgba(0, 0, 0, 0.75)
 		padding: 10px
@@ -103,5 +105,3 @@ body.home
 		position: fixed
 		top: 0
 		@include transition (all 1.0s ease-in-out)
-		&:hover
-			background-color: rgba(240, 94, 27, 0.75)
