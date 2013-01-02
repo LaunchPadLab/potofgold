@@ -20,9 +20,11 @@
   </div>
   <div class="field">
     <%= f.text_area :sample_tweet, rows: '6', class: 'deal_description', placeholder: 'Enter sample tweet' %>
+    <p><span class="countdown_deal_sample_tweet">140</span>
   </div>
   <%= f.hidden_field :image_id %>
   <div class="actions">
-    <%= f.submit 'Start Deal' %>
+    <%= f.submit 'Start Deal', id: 'start_deal' %>
   </div>
 <% end %>
+

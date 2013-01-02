@@ -67,10 +67,10 @@
       // 140 is the max message length
       var remaining = 140 - $('#tweet').val().length;
       if (remaining <= 10){
-        $('.countdown').css('color', 'red');
+        $('.countdown_tweet').css('color', 'red');
       }
       else {
-        $('.countdown').css('color', 'white');
+        $('.countdown_tweet').css('color', 'white');
       }
       if (remaining < 0){
         $('#tweet_button').attr('disabled', true);
@@ -78,11 +78,33 @@
       else {
         $('#tweet_button').attr('disabled', false);
       }
-      $('.countdown').text(remaining);
+      $('.countdown_tweet').text(remaining);
     }
+    
+    function updateCountdownSample() {
+      // 120 is the max message length
+      var remaining = 120 - $('#deal_sample_tweet').val().length;
+      if (remaining <= 10){
+        $('.countdown_deal_sample_tweet').css('color', 'red');
+      }
+      else {
+        $('.countdown_deal_sample_tweet').css('color', 'white');
+      }
+      if (remaining < 0){
+        $('#start_deal').attr('disabled', true);
+      }
+      else {
+        $('#start_deal').attr('disabled', false);
+      }
+      $('.countdown_deal_sample_tweet').text(remaining);
+    }
+
     updateCountdown();
+    updateCountdownSample();
     $('#tweet').change(updateCountdown);
     $('#tweet').keyup(updateCountdown);
+    $('#deal_sample_tweet').change(updateCountdownSample);
+    $('#deal_sample_tweet').keyup(updateCountdownSample);
 
   });
 
