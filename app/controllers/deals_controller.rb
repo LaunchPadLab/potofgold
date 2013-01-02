@@ -1,6 +1,7 @@
 class DealsController < ApplicationController
 
   before_filter :check_current_authorized_user_is_an_advertiser, except: [:show]
+  before_filter :check_current_authorized_user_created_deal, only: [:show]
 
   # GET /deals
   # GET /deals.json
@@ -117,6 +118,12 @@ class DealsController < ApplicationController
 
     def check_current_authorized_user_is_an_advertiser
       redirect_to root_url unless current_authorized_user.advertiser? 
+    end
+    
+    def check_current_authorized_user_created_deal
+      if current_authorized_user
+        redirect_to root_url if current_authorized_user.advertiser? && current_authorized_user.not_create_deal?(params[:id])
+      end
     end
 
 end

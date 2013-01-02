@@ -25,4 +25,8 @@ class Advertiser < ActiveRecord::Base
     false
   end
   
+  def not_create_deal?(deal_id)
+    !self.deals.map { |d| d.id }.index(deal_id.to_i)
+  end
+  
 end
