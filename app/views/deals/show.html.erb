@@ -15,12 +15,13 @@
     <% end %>
 
     <% if @deal.coupons.for_user(current_authorized_user).empty? %>
-      <p><b>Tweet out something to receive the deal:</b></p>
-      <p>Sample: <%= @deal.sample_tweet %></p>
+      <p><b>Send a tweet to receive the deal:</b></p>
+      <!-- <p>Sample: <%#= @deal.sample_tweet %></p> -->
       <% if session[:uid] %>
         <%= form_tag(coupons_url) do %>
-          <%= text_area_tag :tweet, "#{@deal.sample_tweet} #{deal_url(@deal, referred: true)}", rows: '3', cols: '50' %>
-          <p><span class="countdown">140</span><%= submit_tag 'Tweet', class: 'btn btn-primary btn-large', id: 'tweet_button' %></p>
+          <%= text_area_tag :tweet, "#{@deal.sample_tweet} #{deal_url(@deal, referred: true)}" %>
+          <div class="countdown">140</div>
+          <%= submit_tag 'Tweet', id: 'tweet_button' %>
         <% end %>
       <% else %>
         <p><%= link_to 'Tweet to get this Deal', '/auth/twitter', class: 'tweet_btn' %></p>
@@ -37,11 +38,11 @@
 <script>
 
   $(function(){
-    
+
     $.backstretch("<%= @deal.image.image_url %>");
-    
+
     $('#tweet').focus();
-    
+
     function createSelection(start, end, field) {
         if ( field.createTextRange ) {
           var newend = end - start;
@@ -50,15 +51,15 @@
           selRange.moveStart("character", start);
           selRange.moveEnd("character", newend);
           selRange.select();
-        } 
+        }
         else if( field.setSelectionRange ){
           field.setSelectionRange(start, end);
-        } 
+        }
         field.focus();
     }
     var target = document.getElementById('tweet');
     createSelection(0, <%= @deal.sample_tweet.length %>, target);
-    
+
     function updateCountdown() {
       // 140 is the max message length
       var remaining = 140 - $('#tweet').val().length;
