@@ -43,7 +43,8 @@
 	h2
 		color: #f05e1b
 		font-weight: 300
-		font-family: adelle, sans-serif
+		font-family: $highlight-font
+		text-transform: uppercase
 	h3
 		color: #fff
 		margin-bottom: 30px
@@ -54,13 +55,26 @@
 		font-size: 1.375em  /* 22px/16px */
 		font-weight: 300
 	textarea
-		width: 590px
+		width: 600px
 		height: 75px
-		color: #fff
-		font-size: 18px
+		color: #eee
+		font-size: 1.125em
+		line-height: 1.25em
+		font-weight: 300
+		padding: 10px
+		box-sizing: border-box
+
 	input[type="submit"]
 		float: left
 		margin-top: 5px
+
+p.send_tweet
+	border-top: 1px solid #ddd
+	margin-top: 20px
+	padding-top: 20px
+	font-family: $highlight-font
+	text-transform: uppercase
+	color: $orange
 
 .countdown
 	text-align: right
@@ -78,10 +92,9 @@
 	padding: 20px 0
 	margin: 20px 0
 	a
-		color: #F05E1B
+		color: $orange
 	a.btn
 		color: #fff
-		background-color: #777
 
 .deal_stats
 	color: #444
@@ -143,7 +156,8 @@ ol
 			font-size: 16px
 
 .offer_text
-	font-family: adelle, sans-serif
+	font-family: $highlight-font
+	text-transform: uppercase
 	background-color: #222
 	background-color: rgba(0, 0, 0, 0.16)
 	color: #f05e1b
@@ -231,10 +245,10 @@ ol
 
 
 input, button, select, textarea
-	font-family: "freight-sans-pro", sans-serif
+	font-family: $base-font
 
 input[type="submit"]
-	padding: 21px 30px
+	padding: 16px 30px
 	line-height: 1em
 	font-size: 22px
 	color: #fff

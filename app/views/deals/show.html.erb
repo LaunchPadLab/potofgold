@@ -3,7 +3,7 @@
 		<h1><%= @deal.advertiser.business_name %></h1>
 		<h2><%= @deal.coupon_text %></h2>
 		<p><%= @deal.description %></p>
-    <p>Expires on <%= @deal.end_date.strftime('%D') %></p>
+    <p>This deal expires on <%= @deal.end_date.strftime('%B %e, %Y') %>.</p>
 		<% if @coupon %>
       <% if @coupon.not_redeemed? && @deal.not_expired? %>
         <p><%= link_to 'Redeem', coupon_url(@coupon, redeemed: true), class: 'btn btn-danger btn-large', method: :put %></p>
@@ -15,7 +15,7 @@
     <% end %>
 
     <% if @deal.coupons.for_user(current_authorized_user).empty? %>
-      <p><b>Send a tweet to receive the deal:</b></p>
+      <p class="send_tweet">Send a tweet to get the deal:</p>
       <!-- <p>Sample: <%#= @deal.sample_tweet %></p> -->
       <% if session[:uid] %>
         <%= form_tag(coupons_url) do %>
