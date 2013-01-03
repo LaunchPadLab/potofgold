@@ -51,6 +51,7 @@ class DealsController < ApplicationController
   def new
     @deal = Deal.new
     @images = current_authorized_user.images
+    @default_images = Image.order('created_at ASC').limit(6)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -62,6 +63,7 @@ class DealsController < ApplicationController
   def edit
     @deal = Deal.find(params[:id])
     @images = current_authorized_user.images
+    @default_images = Image.order('created_at ASC').limit(6)
   end
 
   # POST /deals
