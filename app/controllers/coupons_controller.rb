@@ -44,7 +44,7 @@ class CouponsController < ApplicationController
   # POST /coupons.json
   def create
     tweet = TwitterMessaging.new(session[:token], session[:secret]).send_tweet(params[:tweet])
-    
+
     params[:coupon] = { deal_id: session[:deal_id], followers: tweet[:user][:followers_count], redeemed: false, referred: session[:referred], tweet: params[:tweet] }
     @coupon = current_authorized_user.coupons.new(params[:coupon])
 
@@ -68,7 +68,7 @@ class CouponsController < ApplicationController
 
     respond_to do |format|
       if @coupon.update_attributes(redeemed: params[:redeemed])
-        format.html { redirect_to @coupon, notice: 'Coupon was successfully updated.' }
+        format.html { redirect_to coupons_url, notice: 'Coupon was successfully redeemed.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -92,7 +92,7 @@ class CouponsController < ApplicationController
   private
 
     def check_current_authorized_user_is_a_customer
-      redirect_to root_url unless current_authorized_user.user? 
+      redirect_to root_url unless current_authorized_user.user?
     end
 
 end
