@@ -52,6 +52,7 @@
           success: function(data){
             $('.deal_details').slideUp();
             $('.deal_starter_tweet').slideDown();
+            $('.background_image_form_container').slideUp();
             $('#tweet').val('We\'re offering ' + data["coupon_text"] + '. Get yours here: <%= "#{root_url}deals/" %>' + data["id"]);
             $('#tweet').focus();
           },
@@ -105,6 +106,11 @@
     $('#deal_sample_tweet').change(updateCountdownSample);
     $('#deal_sample_tweet').keyup(updateCountdownSample);
 
+    $('#deal_description').change(function(){
+      var val = $('#deal_coupon_text').val();
+      $('#deal_sample_tweet').val('I just got ' + val + ' from @<%= current_authorized_user.username %>. Get yours here: ');
+      updateCountdownSample();
+    });
   });
 
 </script>
