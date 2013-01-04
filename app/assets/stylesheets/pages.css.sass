@@ -83,6 +83,9 @@ body.home
 		margin-bottom: 20px
 		text-shadow: 1px 1px 1px #000
 
+nav
+	@include clearfix
+
 a.signin_btn
 	display: inline-block
 	padding: 21px 30px
@@ -96,15 +99,12 @@ a.signin_btn
 		text-decoration: none
 
 .background_container
-	margin-top: 20px
 	a.sign_in
+		float: right
 		background-color: #000
 		background-color: rgba(0, 0, 0, 0.75)
 		padding: 10px
 		@include border-radius(0 0 6px 6px)
-		position: fixed
-		top: 0
-		right: 200px
 		@include transition (all 0.2s ease-in-out)
 		&:hover
 			color: #fff
@@ -113,9 +113,9 @@ a.signin_btn
 			text-decoration: none
 			@include transition (all 0.2s ease-in-out)
 	img
+		float: left
+		vertical-align: top
 		background-color: rgba(0, 0, 0, 0.75)
 		padding: 10px
 		@include border-radius(0 0 6px 6px)
-		position: fixed
-		top: 0
 		@include transition (all 1.0s ease-in-out)

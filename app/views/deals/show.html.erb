@@ -2,11 +2,17 @@
 	<div class="deal_inner">
 		<h1><%= @deal.advertiser.business_name %></h1>
 		<h2><%= @deal.coupon_text %></h2>
-		<p><%= @deal.description %></p>
+    <% if @coupon %>
+      <p>Congratulations! You got this deal!</p>
+      <p>Show this to <%= @deal.advertiser.business_name %> when you are ready to redeem it.</p>
+    <% else %>
+      <p><%= @deal.description %></p>
+    <% end %>
+
     <p>This deal expires on <%= @deal.end_date.strftime('%B %e, %Y') %>.</p>
 		<% if @coupon %>
       <% if @coupon.not_redeemed? && @deal.not_expired? %>
-        <p><%= link_to 'Redeem', coupon_url(@coupon, redeemed: true), class: 'btn btn-danger btn-large', method: :put %></p>
+        <p><%= link_to 'Redeem', coupon_url(@coupon, redeemed: true), class: 'orange_btn redeem_btn', method: :put, alert: 'are you sure?' %></p>
       <% elsif @coupon.redeemed? %>
         <p>Thanks for using this coupon on <%= @coupon.updated_at.strftime('%B %e, %Y') %></p>
       <% else %>
@@ -16,6 +22,7 @@
 
     <% if @deal.coupons.for_user(current_authorized_user).empty? %>
       <% if session[:uid] %>
+        <p class="send_tweet">Send a tweet to get this deal</p>
         <%= form_tag(coupons_url) do %>
           <%= text_area_tag :tweet, "#{@deal.sample_tweet} #{deal_url(@deal, referred: true)}" %>
           <div class="countdown">140</div>

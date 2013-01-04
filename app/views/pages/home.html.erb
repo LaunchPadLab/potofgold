@@ -1,16 +1,18 @@
 <div class="background_container">
-  <%= image_tag('bird.svg') %>
-  <%= link_to 'Are you a business? Sign in here', advertiser_sign_in_url, class: 'sign_in' %>
-<header>
-	<h1 id="headline">Go Branch Out</h1>
-  <h2 id="tagline">Share the best deals with your friends</h2>
-</header>
+  <nav>
+    <%= image_tag('bird.svg') %>
+    <%= link_to 'Are you a business? Sign in here', advertiser_sign_in_url, class: 'sign_in' %>
+  </nav>
+  <header>
+  	<h1 id="headline">Go Branch Out</h1>
+    <h2 id="tagline">Share the best deals with your friends</h2>
+  </header>
 
-<% if current_authorized_user %>
-	<p>@<%= current_authorized_user.username %> | <%= link_to 'Sign Out', signout_url, method: :delete %></p>
-<% else %>
-	<p><%= link_to 'Sign in with Twitter', '/auth/twitter', class: 'signin_btn' %></p>
-<% end %>
+  <% if current_authorized_user %>
+  	<p>@<%= current_authorized_user.username %> | <%= link_to 'Sign Out', signout_url, method: :delete %></p>
+  <% else %>
+  	<p><%= link_to 'Sign in with Twitter', '/auth/twitter', class: 'signin_btn' %></p>
+  <% end %>
 
 </div>
 

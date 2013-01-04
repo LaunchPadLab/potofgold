@@ -31,7 +31,7 @@ class DealsController < ApplicationController
 
   def stats
     @deal = Deal.find(params[:id], include: [:advertiser, :coupons, :users])
-    
+
     grouped_coupons = @deal.coupons.oldest.group_by { |c| c.created_at.strftime('%D') }
     prev = 0
     arr = grouped_coupons.values.map { |coupons| coupons.map { |c| c.followers}.total }.collect { |value| prev += value }
@@ -79,13 +79,13 @@ class DealsController < ApplicationController
       end
     end
   end
-  
+
   # POST /tweet
   def tweet
-    #TwitterMessaging.new(session[:token], session[:secret]).send_tweet(params[:tweet])
-    
+    TwitterMessaging.new(session[:token], session[:secret]).send_tweet(params[:tweet])
+
     redirect_to deals_url, notice: 'You just started a new deal. Good luck!'
-    
+
   end
 
   # PUT /deals/1
@@ -119,9 +119,9 @@ class DealsController < ApplicationController
   private
 
     def check_current_authorized_user_is_an_advertiser
-      redirect_to root_url unless current_authorized_user.advertiser? 
+      redirect_to root_url unless current_authorized_user.advertiser?
     end
-    
+
     def check_current_authorized_user_created_deal
       if current_authorized_user
         redirect_to root_url if current_authorized_user.advertiser? && current_authorized_user.not_create_deal?(params[:id])
