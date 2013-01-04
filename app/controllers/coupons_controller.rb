@@ -45,7 +45,7 @@ class CouponsController < ApplicationController
   def create
     tweet = TwitterMessaging.new(session[:token], session[:secret]).send_tweet(params[:tweet])
 
-    params[:coupon] = { deal_id: session[:deal_id], followers: tweet[:user][:followers_count], redeemed: false, referred: session[:referred], tweet: params[:tweet] }
+    params[:coupon] = { deal_id: params[:deal_id], followers: tweet[:user][:followers_count], redeemed: false, referred: session[:referred], tweet: params[:tweet] }
     @coupon = current_authorized_user.coupons.new(params[:coupon])
 
     respond_to do |format|
