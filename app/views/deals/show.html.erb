@@ -15,16 +15,14 @@
     <% end %>
 
     <% if @deal.coupons.for_user(current_authorized_user).empty? %>
-      <p class="send_tweet">Send a tweet to get the deal:</p>
-      <!-- <p>Sample: <%#= @deal.sample_tweet %></p> -->
+      <p class="send_tweet">Sign in to Twitter to get this deal</p>
+      <p><%= link_to 'Sign in with Twitter', '/auth/twitter', class: 'signin_btn' %></p>
       <% if session[:uid] %>
         <%= form_tag(coupons_url) do %>
           <%= text_area_tag :tweet, "#{@deal.sample_tweet} #{deal_url(@deal, referred: true)}" %>
           <div class="countdown">140</div>
           <%= submit_tag 'Tweet', id: 'tweet_button' %>
         <% end %>
-      <% else %>
-        <p><%= link_to 'Tweet to get this Deal', '/auth/twitter', class: 'tweet_btn' %></p>
       <% end %>
     <% else %>
 <!--       <p>Conversation:</p>
