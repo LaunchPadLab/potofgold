@@ -2,13 +2,17 @@
   <div class="navigation-inner container">
     <%= link_to "#{image_tag('bird.svg', style: 'width: 30px;')}".html_safe, root_url, class: 'logo' %>
     <ul class="navigation-links">
-      <li class="twitter_handle">@<%= current_authorized_user.username %></li>
-      <% if current_authorized_user.advertiser? %>
-        <li class="active"><%= link_to 'My Deals', deals_url %></li>
+      <% if current_page? root_path %>
+        <li><%= link_to 'Are you a business? Sign in here', advertiser_sign_in_url %></li>
       <% else %>
-        <li class="active"><%= link_to 'My Coupons', coupons_url %></li>
+        <li class="twitter_handle">@<%= current_authorized_user.username %></li>
+        <% if current_authorized_user.advertiser? %>
+          <li class="active"><%= link_to 'My Deals', deals_url %></li>
+        <% else %>
+          <li class="active"><%= link_to 'My Coupons', coupons_url %></li>
+        <% end %>
+        <li><%= link_to 'Sign Out', signout_url, method: :delete %></li>
       <% end %>
-      <li><%= link_to 'Sign Out', signout_url, method: :delete %></li>
     </ul>
   </div>
 </div>
