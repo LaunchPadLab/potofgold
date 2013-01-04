@@ -25,6 +25,7 @@
         <p class="send_tweet">Send a tweet to get this deal</p>
         <%= form_tag(coupons_url) do %>
           <%= text_area_tag :tweet, "#{@deal.sample_tweet} #{deal_url(@deal, referred: true)}" %>
+          <%= hidden_field_tag :deal_id, @deal.id %>
           <div class="countdown">140</div>
           <%= submit_tag 'Tweet', id: 'tweet_button' %>
         <% end %>
