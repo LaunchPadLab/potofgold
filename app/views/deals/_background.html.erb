@@ -48,7 +48,7 @@
 	<div class="deal_inner hide deal_starter_tweet">
 	  <p>Congrats! Let's start this deal off with an awesome tweet.</p>
 	  <%= form_tag(tweet_url) do %>
-    <%= text_area_tag :tweet, "#{root_url}deals/", rows: '6', class: 'deal_description', placeholder: 'Enter starter tweet' %>
+    <%= text_area_tag :tweet, nil, rows: '6', class: 'deal_description', placeholder: 'Enter starter tweet' %>
     <p><span class="countdown_tweet">140</span></p>
     <%= submit_tag 'Tweet to start the deal!', class: 'btn btn-primary btn-large', id: 'tweet_button' %>
   <% end %>
