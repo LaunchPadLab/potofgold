@@ -14,9 +14,9 @@
 </head>
 <body class="<%= controller_name -%> <%= action_name -%>">
 
-  <% if current_authorized_user %>
+  <%# if current_authorized_user %>
     <%= render 'layouts/header' %>
-  <% end %>
+  <%# end %>
   <div class="container">
     <%= yield %>
   </div>
