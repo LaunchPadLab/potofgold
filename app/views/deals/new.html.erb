@@ -50,10 +50,9 @@
                   image_id: $('#deal_image_id').val() }
                 },
           success: function(data){
-            var val = $('#tweet').val();
-            $('#tweet').val(val + data['id']);
             $('.deal_details').slideUp();
             $('.deal_starter_tweet').slideDown();
+            $('#tweet').val('We\'re offering ' + data["coupon_text"] + '. Get yours here: <%= "#{root_url}deals/" %>' + data["id"]);
             $('#tweet').focus();
           },
           error: function(data){
