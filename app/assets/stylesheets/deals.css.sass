@@ -37,10 +37,11 @@
 	text-align: center
 	background-color: #222
 	background-color: rgba(0, 0, 0, 0.75)
-	padding: 10px
+	padding: 10px 10px 40px
 	.deal_inner
 		padding: 40px 40px 60px
 	h2
+		margin-bottom: 20px
 		color: #f05e1b
 		font-weight: 300
 		font-family: $highlight-font
@@ -69,7 +70,7 @@
 		margin-top: 5px
 
 p.send_tweet
-	border-top: 1px solid #ddd
+	border-top: 1px solid #555
 	margin-top: 20px
 	padding-top: 20px
 	font-family: $highlight-font
@@ -88,13 +89,14 @@ p.send_tweet
 
 .all_deals
 	color: #444
-	font-family: helvetica
+	font-family: $base-font
 	padding: 20px 0
 	margin: 20px 0
 	a
 		color: $orange
-	a.btn
-		color: #fff
+	h2
+		display: inline-block
+		margin-bottom: 30px
 
 .deal_stats
 	color: #444
@@ -104,6 +106,17 @@ p.send_tweet
 	a
 		color: #F05E1B
 
+a.new_btn
+	padding: 10px 30px
+	line-height: 1em
+	font-size: 16px
+	color: #fff
+	background-color: $green
+	float: right
+	@include border-radius(6px)
+	&:hover
+		background-color: #449b44
+		text-decoration: none
 
 // Deal New
 
@@ -238,6 +251,7 @@ ol
 	background-color: #222
 	background-color: rgba(0, 0, 0, 0.65)
 	border: none
+
 #tweet:focus
 	background-color: #111
 	background: rgba(0, 0, 0, 0.85)
@@ -260,6 +274,7 @@ input[type="submit"]
 		text-decoration: none
 
 // Deal Edit
+
 .background_image_form_container
 	width: 640px
 	margin: 50px auto 0 auto

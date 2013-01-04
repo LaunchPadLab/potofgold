@@ -11,14 +11,32 @@
 @media (max-width: 480px)
 	h1
 		font-size: 2.625em  /* 42px/16px */
+
 	body.home
 		h1
 			margin: 40px 0
 
+	.container
+		width: 90%
+
 	.deal_container
 		width: 96%
-		margin: 20px auto auto
+		margin: 10px auto auto
 		.deal_inner
-			padding: 20px
+			padding: 10px
 		.tweet_btn
 			padding: 10px 20px
+		textarea
+			width: 360px
+			height: 155px
+	input[type="submit"]
+		padding: 16px 30px
+		line-height: 1em
+		font-size: 18px
+		color: #fff
+		background-color: #f05e1b
+		border: none
+		@include border-radius(6px)
+		&:hover
+			background-color: #cb5017
+			text-decoration: none
