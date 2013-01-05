@@ -10,16 +10,22 @@
     </div>
   <% end %>
   <div class="field offer">
-    <%= f.text_field :coupon_text, class: 'offer_text', placeholder: 'Enter your offer' %>
+    <%= f.label :your_offer %>
+    <%= f.text_field :coupon_text, class: 'offer_text', placeholder: 'Free Appetizer' %>
   </div>
   <div class="field description">
-    <%= f.text_area :description, rows: '6', class: 'deal_description', placeholder: 'Enter a description of your deal' %>
+    <%= f.label :description_of_your_offer %>
+    <%= f.text_area :description, rows: '6', class: 'deal_description', placeholder: 'Come in to our resturant for a free appetizer. Choose any app, from our famous spicy buffalo wings to our jumbo shrimp cocktail. Our resturant has been serving the best food in the city for over 20 years...' %>
   </div>
   <div class="field date">
-    <%= f.text_field :end_date, placeholder: 'Select an end date', class: 'deal_end_date' %>
+    <%= f.label :offer_end_date %>
+    <%= f.text_field :end_date, placeholder: 'When is your offer valid until', class: 'deal_end_date' %>
   </div>
   <div class="field">
-    <%= f.text_area :sample_tweet, rows: '6', class: 'deal_description', placeholder: 'Enter a tweet for your customers to share' %>
+    <%= f.label :suggested_tweet_for_your_customers_to_share %>
+    <p class="explain_label">Your customer will tweet this to get your offer.<br>
+                              A link to the deal will be added to the end of the tweet.</p>
+    <%= f.text_area :sample_tweet, rows: '6', class: 'deal_tweet', placeholder: 'Enter a tweet for your customers to share' %>
     <p><span class="countdown_deal_sample_tweet">140</span>
   </div>
   <%= f.hidden_field :image_id %>
