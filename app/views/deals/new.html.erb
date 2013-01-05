@@ -1,5 +1,8 @@
 <div class="background_image_form_container hide">
-  <p>Want to change this background image? Click <%= link_to 'here', '', id: 'background_image_link' %></p>
+  <h2>Create your Deal</h2>
+  <div class="change_background">
+    <%= link_to 'Change background image', '', id: 'background_image_link' %>
+  </div>
 </div>
 
 <div class="deal_container">
@@ -80,7 +83,7 @@
       }
       $('.countdown_tweet').text(remaining);
     }
-    
+
     function updateCountdownSample() {
       // 120 is the max message length
       var remaining = 120 - $('#deal_sample_tweet').val().length;

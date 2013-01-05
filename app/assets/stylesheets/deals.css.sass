@@ -33,7 +33,7 @@
 .deal_container
 	width: 680px
 	min-height: 400px
-	margin: 120px auto auto
+	margin: 50px auto auto
 	text-align: center
 	background-color: #222
 	background-color: rgba(0, 0, 0, 0.75)
@@ -168,6 +168,26 @@ ol
 			color: black !important
 			font-size: 16px
 
+.background_image_form_container
+	height: 80px
+	@include clearfix
+	h2
+		float: left
+		line-height: 80px
+	#background_image_link
+		margin-top: 22px
+		float: right
+		padding: 10px 20px
+		line-height: 1em
+		font-size: 14px
+		color: $orange
+		background-color: #fff
+		@include border-radius(6px)
+		&:hover
+			background-color: #eee
+			text-decoration: none
+
+
 .offer_text
 	font-family: $highlight-font
 	text-transform: uppercase
@@ -187,8 +207,9 @@ ol
 .deals
 	input[type="text"]
 		height: 40px
-		width: 550px
+		width: 600px
 		line-height: 40px
+		box-sizing: border-box
 .offer_text::-webkit-input-placeholder
 	color: #f05e1b !important
 .offer_text:-moz-placeholder
@@ -222,7 +243,7 @@ ol
 	input[type="text"]
 		color: #fff
 		font-weight: 300
-		font-size: 1.375em
+		font-size: 1.125em
 
 #file
 	color: white
@@ -306,7 +327,7 @@ input[type="submit"]
 // Deal Edit
 
 .background_image_form_container
-	width: 640px
+	width: 660px
 	margin: 50px auto 0 auto
 	text-align: center
 	padding: 20px
