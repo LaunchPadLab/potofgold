@@ -114,8 +114,8 @@
     $('#deal_sample_tweet').change(updateCountdownSample);
     $('#deal_sample_tweet').keyup(updateCountdownSample);
 
-    $('#deal_description').change(function(){
-      var val = $('#deal_coupon_text').val();
+    $('#deal_coupon_text').change(function(){
+      var val = $(this).val();
       $('#deal_sample_tweet').val('I just got ' + val + ' from @<%= current_authorized_user.username %>. Get yours here: ');
       updateCountdownSample();
     });
