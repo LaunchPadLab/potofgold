@@ -8,6 +8,9 @@ class Deal < ActiveRecord::Base
   has_many :users, through: :coupons
   belongs_to :image
   
+  #Validation
+  validates :end_date, :coupon_text, :sample_tweet, :description, :image_id, presence: true
+  
   #Instance methods
   def redemptions
     self.coupons.redeemed.length
