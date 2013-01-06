@@ -98,7 +98,9 @@ class DealsController < ApplicationController
         format.html { redirect_to @deal, notice: 'Deal was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        @images = current_authorized_user.images
+        @default_images = Image.order('created_at ASC').limit(6)
+        format.html { render action: "edit", alert: 'Deal not updated!' }
         format.json { render json: @deal.errors, status: :unprocessable_entity }
       end
     end
