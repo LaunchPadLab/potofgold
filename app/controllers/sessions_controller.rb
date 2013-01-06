@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     session[:secret] = auth_hash['credentials']['secret']
     session[:user_name] = auth_hash['info']['nickname']
     session[:uid] = auth_hash['uid']
-    if session[:advertiser].present?
+    if session[:advertiser].present? 
       @advertiser = Advertiser.find_or_create_from_auth_hash(auth_hash)
       session[:user_id] = @advertiser.id
       if @advertiser.deals.any?

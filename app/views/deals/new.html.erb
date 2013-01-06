@@ -45,24 +45,29 @@
     });
 
     $('#new_deal').submit(function(){
-      $.ajax({ type: 'POST', url: '<%= j(deals_url) %>',
-          data: { deal: { coupon_text: $('#deal_coupon_text').val(),
-                  description: $('#deal_description').val(),
-                  end_date: $('#deal_end_date').val(),
-                  sample_tweet: $('#deal_sample_tweet').val(),
-                  image_id: $('#deal_image_id').val() }
-                },
-          success: function(data){
-            $('.deal_details').slideUp();
-            $('.deal_starter_tweet').slideDown();
-            $('.background_image_form_container').slideUp();
-            $('#tweet').val('We\'re offering ' + data["coupon_text"] + '. Get yours here: <%= "#{root_url}deals/" %>' + data["id"]);
-            $('#tweet').focus();
-          },
-          error: function(data){
-            alert('Something went wrong!');
-          },
-      dataType: 'json'});
+      if ($('#deal_coupon_text').val() != '' && $('#deal_description').val() != '' && $('#deal_end_date').val() != '' && $('#deal_sample_tweet').val() != '' ){
+        $.ajax({ type: 'POST', url: '<%= j(deals_url) %>',
+            data: { deal: { coupon_text: $('#deal_coupon_text').val(),
+                    description: $('#deal_description').val(),
+                    end_date: $('#deal_end_date').val(),
+                    sample_tweet: $('#deal_sample_tweet').val(),
+                    image_id: $('#deal_image_id').val() }
+                  },
+            success: function(data){
+              $('.deal_details').slideUp();
+              $('.deal_starter_tweet').slideDown();
+              $('.background_image_form_container').slideUp();
+              $('#tweet').val('We\'re offering ' + data["coupon_text"] + '. Get yours here: <%= "#{root_url}deals/" %>' + data["id"]);
+              $('#tweet').focus();
+            },
+            error: function(data){
+              alert('Something went wrong!');
+            },
+        dataType: 'json'});
+      }
+      else {
+        alert('All fields are required!\nPlease fill them all out.');
+      }
       return false;
     });
 
