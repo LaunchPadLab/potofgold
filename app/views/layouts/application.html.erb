@@ -21,5 +21,7 @@
     <%= yield %>
   </div>
 
+  <%= render 'layouts/tracking_code' if Rails.env.production? %>
+
 </body>
 </html>
