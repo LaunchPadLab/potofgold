@@ -12,7 +12,7 @@
     <p>This deal expires on <%= @deal.end_date.strftime('%B %e, %Y') %>.</p>
 		<% if @coupon %>
       <% if @coupon.not_redeemed? && @deal.not_expired? %>
-        <p><%= link_to 'Redeem', coupon_url(@coupon, redeemed: true), class: 'orange_btn redeem_btn', method: :put, alert: 'are you sure?' %></p>
+        <p><%= link_to 'Redeem in store', coupon_url(@coupon, redeemed: true), class: 'orange_btn redeem_btn', method: :put, confirm: 'WAIT! Only continue if asked to do so by the business. The redeem button can only be pressed once. Are you sure you want to contine?' %></p>
       <% elsif @coupon.redeemed? %>
         <p>Thanks for using this coupon on <%= @coupon.updated_at.strftime('%B %e, %Y') %></p>
       <% else %>
