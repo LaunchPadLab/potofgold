@@ -9,15 +9,22 @@
 
 /* Landscape phones and down */
 @media (max-width: 480px)
+	.container
+		width: 90%
+
 	h1
-		font-size: 2.625em  /* 42px/16px */
+		font-size: 36px
 
 	body.home
 		h1
-			margin: 40px 0
+			font-size: 36px
+			margin: 40px 0 0
+		h2
+			font-size: 16px
 
-	.container
-		width: 90%
+	.background_container
+		a.sign_in
+			font-size: 12px
 
 	.deal_container
 		width: 96%
@@ -29,6 +36,9 @@
 		textarea
 			width: 360px
 			height: 155px
+		input[type="text"]
+			width: 360px
+
 	input[type="submit"]
 		padding: 16px 30px
 		line-height: 1em
