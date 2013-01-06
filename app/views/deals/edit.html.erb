@@ -1,11 +1,17 @@
 <div class="background_image_form_container">
-  <p>Want to change this background image? Click <%= link_to 'here', '', id: 'background_image_link' %></p>
-  <div id="background_image_form" class="hide">
+  <h2>Edit your Deal</h2>
+  <div class="change_background">
+    <%= link_to 'Change background image', '', id: 'background_image_link' %>
+  </div>
+</div>
+<div class="deal_container hide">
+  <div class="background_image_selection">
     <%= render 'background' %>
   </div>
 </div>
+
 <div class="deal_container">
-	<div class="deal_inner">
+	<div class="deal_inner deal_details">
     <h1><%= current_authorized_user.business_name %></h1>
     <%= render 'form' %>
 	</div>
@@ -19,7 +25,8 @@
     $("#deal_end_date").datepicker({ dateFormat: 'yy-mm-dd', constrainInput: true, minDate: new Date(), defaultDate: '<%= @deal.end_date.strftime("%Y-%-m-%-e") %>' });
     
     $('#background_image_link').click(function(){
-      $('#background_image_form').slideDown();
+      $('.background_image_form_container').slideUp();
+      $('.background_image_selection').parent().show();
       return false;
     });
 
@@ -35,7 +42,7 @@
       var url = $(this).parent().parent().children(':first-child').attr('src');
       var image_id = $(this).parent().parent().children(':first-child').attr('id').toString().match(/\d+/)[0];
       $.backstretch(url);
-      $('#background_image_form').slideUp();
+      $('.background_image_selection').parent().slideUp();
       $('.background_image_form_container').slideDown();
       $('#deal_image_id').val(image_id);
       return false;
