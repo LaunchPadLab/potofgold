@@ -29,7 +29,68 @@
   </div>
   <%= f.hidden_field :image_id %>
   <div class="actions">
-    <%= f.submit 'Start Deal', id: 'start_deal' %>
+    <% if action_name != 'edit' %>
+      <%= f.submit 'Start Deal', id: 'start_deal' %>
+    <% else %>
+      <%= f.submit 'Update Deal' %>
+    <% end %>
   </div>
 <% end %>
 
+<script>
+
+  $(function(){
+    function updateCountdown() {
+      // 140 is the max message length
+      var remaining = 140 - $('#tweet').val().length;
+      if (remaining <= 10){
+        $('.countdown_tweet').css('color', 'red');
+      }
+      else {
+        $('.countdown_tweet').css('color', 'white');
+      }
+      if (remaining < 0){
+        $('#tweet_button').attr('disabled', true);
+      }
+      else {
+        $('#tweet_button').attr('disabled', false);
+      }
+      $('.countdown_tweet').text(remaining);
+    }
+
+    function updateCountdownSample() {
+      // 120 is the max message length
+      var remaining = 120 - $('#deal_sample_tweet').val().length;
+      if (remaining <= 10){
+        $('.countdown_deal_sample_tweet').css('color', 'red');
+      }
+      else {
+        $('.countdown_deal_sample_tweet').css('color', 'white');
+      }
+      if (remaining < 0){
+        $('#start_deal').attr('disabled', true);
+      }
+      else {
+        $('#start_deal').attr('disabled', false);
+      }
+      $('.countdown_deal_sample_tweet').text(remaining);
+    }
+
+    updateCountdownSample();
+    <% if action_name != 'edit' %>
+      updateCountdown();
+      $('#tweet').change(updateCountdown);
+      $('#tweet').keyup(updateCountdown);
+    <% end %>
+    $('#deal_sample_tweet').change(updateCountdownSample);
+    $('#deal_sample_tweet').keyup(updateCountdownSample);
+
+    $('#deal_coupon_text').change(function(){
+      var val = $(this).val();
+      $('#deal_sample_tweet').val('I just got ' + val + ' from @<%= current_authorized_user.username %>. Get yours here: ');
+      updateCountdownSample();
+    });    
+    
+  });
+  
+</script>
