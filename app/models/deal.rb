@@ -22,7 +22,7 @@ class Deal < ActiveRecord::Base
   
   def followers
     new_followers = self.coupons.any? ? self.coupons.map { |c| c.followers }.total : 0
-    deal.advertiser.followers_count + new_followers
+    self.advertiser.followers_count + new_followers
   end
   
   def conversion
