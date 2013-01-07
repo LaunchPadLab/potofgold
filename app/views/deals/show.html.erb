@@ -1,17 +1,14 @@
 <div class="deal_container">
 	<div class="deal_inner">
 		<h1><%= @deal.advertiser.business_name %></h1>
-		<h2><%= @deal.coupon_text %></h2>
-    <% if @coupon %>
-      <p>Congratulations! You got this deal!</p>
-      <p>Show this to <%= @deal.advertiser.business_name %> when you are ready to redeem it.</p>
-    <% else %>
-      <p><%= @deal.description %></p>
-    <% end %>
-
+		<h2><%= @deal.coupon_text %></h2>		
+    <p><%= @deal.description %></p>
     <p>This deal expires on <%= @deal.end_date.strftime('%B %e, %Y') %>.</p>
+        
 		<% if @coupon %>
       <% if @coupon.not_redeemed? && @deal.not_expired? %>
+        <p>Congratulations! You got this deal!</p>
+        <p>Show this to <%= @deal.advertiser.business_name %> when you are ready to redeem it.</p>
         <p><%= link_to 'Redeem in store', coupon_url(@coupon, redeemed: true), class: 'orange_btn redeem_btn', method: :put, confirm: 'WAIT! Only continue if asked to do so by the business. The redeem button can only be pressed once. Are you sure you want to contine?' %></p>
       <% elsif @coupon.redeemed? %>
         <p>Thanks for using this coupon on <%= @coupon.updated_at.strftime('%B %e, %Y') %></p>
@@ -33,11 +30,6 @@
         <p class="send_tweet">Sign in to Twitter to get this deal</p>
         <p><%= link_to 'Sign in with Twitter', '/auth/twitter', class: 'signin_btn' %></p>
       <% end %>
-    <% else %>
-<!--       <p>Conversation:</p>
-      <%# @deal.coupons.each do |coupon| %>
-        <p><%#= @coupon.tweet %> by <%#= coupon.user.username %></p>
-      <%# end %> -->
     <% end %>
 	</div>
 </div>
