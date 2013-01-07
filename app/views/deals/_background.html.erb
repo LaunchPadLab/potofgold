@@ -3,12 +3,13 @@
     <%= s3_uploader_form post: images_url, as: "image[image_url]" do %>
       <li>
         <span>Upload an image: </span>
-        <%= file_field_tag :file, multiple: true %></li>
+        <%= file_field_tag :file, multiple: true %>
+      </li>
     <% end %>
 <script id="template-upload" type="text/x-tmpl">
   <div class="upload">
     {%=o.name%}
-    <div class="progress"><div class="bar" style="width: 0%"></div></div>
+    <div class="progress" style="width: 95%; margin-left: 15px;"><div class="bar" style="width: 0%"></div></div>
   </div>
 </script>
 </p>

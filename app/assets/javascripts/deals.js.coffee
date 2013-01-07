@@ -5,7 +5,8 @@ jQuery ->
       file = data.files[0]
       if types.test(file.type) || types.test(file.name)
         data.context = $(tmpl("template-upload", file))
-        $('#fileupload').append(data.context)
+        # $('#fileupload').append(data.context)
+        $(data.context).insertAfter('#file')
         data.submit()
       else
         alert("#{file.name} is not a gif, jpeg, or png image file")
