@@ -16,5 +16,8 @@ class Coupon < ActiveRecord::Base
     !self.redeemed
   end
   
+  def expired?
+    deal.end_date < DateTime.now()
+  end
   
 end

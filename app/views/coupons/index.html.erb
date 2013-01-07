@@ -14,7 +14,7 @@
       <td><%= coupon.deal.advertiser.business_name%></td>
       <td><%= link_to coupon.deal.coupon_text, coupon.deal %></td>
       <td><%= coupon.deal.end_date.strftime('%D') %></td>
-      <td><%= print_redeemed(coupon.redeemed) %></td>
+      <td><%= print_redeemed(coupon) %></td>
     </tr>
   <% end %>
 
