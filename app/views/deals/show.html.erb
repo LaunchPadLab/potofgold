@@ -9,27 +9,23 @@
       <% if @coupon.not_redeemed? && @deal.not_expired? %>
         <p>Congratulations! You got this deal!</p>
         <p>Show this to <%= @deal.advertiser.business_name %> when you are ready to redeem it.</p>
-        <p><%= link_to 'Redeem in store', coupon_url(@coupon, redeemed: true), class: 'orange_btn redeem_btn', method: :put, confirm: 'WAIT! Only continue if asked to do so by the business. The redeem button can only be pressed once. Are you sure you want to contine?' %></p>
+        <p><%= link_to 'Redeem in store', coupon_url(@coupon, redeemed: true), class: 'orange_btn redeem_btn', method: :put, confirm: 'WAIT! Only continue if asked to do so by the business. The redeem button can only be pressed once. Are you sure you want to continue?' %></p>
       <% elsif @coupon.redeemed? %>
         <p>Thanks for using this coupon on <%= @coupon.updated_at.strftime('%B %e, %Y') %></p>
       <% else %>
         <p>Sorry. This deal expired on <%= @deal.end_date.strftime('%B %e, %Y') %></p>
       <% end %>
-    <% end %>
-
-    <% if @deal.coupons.for_user(current_authorized_user).empty? %>
-      <% if session[:uid] %>
-        <p class="send_tweet">Send a tweet to get this deal</p>
-        <%= form_tag(coupons_url) do %>
-          <%= text_area_tag :tweet, "#{@deal.sample_tweet} #{deal_url(@deal, referred: true)}" %>
-          <%= hidden_field_tag :deal_id, @deal.id %>
-          <div class="countdown">140</div>
-          <%= submit_tag 'Tweet', id: 'tweet_button' %>
-        <% end %>
-      <% else %>
-        <p class="send_tweet">Sign in to Twitter to get this deal</p>
-        <p><%= link_to 'Sign in with Twitter', '/auth/twitter', class: 'signin_btn' %></p>
+    <% elsif session[:uid] %>
+      <p class="send_tweet">Send a tweet to get this deal</p>
+      <%= form_tag(coupons_url) do %>
+        <%= text_area_tag :tweet, "#{@deal.sample_tweet} #{deal_url(@deal, referred: true)}" %>
+        <%= hidden_field_tag :deal_id, @deal.id %>
+        <div class="countdown">140</div>
+        <%= submit_tag 'Tweet', id: 'tweet_button' %>
       <% end %>
+    <% else %>
+      <p class="send_tweet">Sign in to Twitter to get this deal</p>
+      <p><%= link_to 'Sign in with Twitter', '/auth/twitter', class: 'signin_btn' %></p>
     <% end %>
 	</div>
 </div>
