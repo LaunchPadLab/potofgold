@@ -87,8 +87,6 @@ body.home
 	p
 		font-size: 1.2em
 		text-shadow : 0 2px 10px rgba(0,0,0,.8)
-	a
-		text-decoration: underline
 
 nav
 	@include clearfix
@@ -100,10 +98,16 @@ a.signin_btn
 	font-size: 22px
 	color: $orange
 	background-color: #fff
-	@include border-radius(6px)
+	border-radius: 6px
+	text-shadow: none
 	&:hover
 		background-color: #eee
 		text-decoration: none
+
+a.today_deal
+	text-decoration: underline
+	&:hover
+		color: $orange
 
 .background_container
 	a.sign_in
@@ -111,7 +115,7 @@ a.signin_btn
 		background-color: #000
 		background-color: rgba(0, 0, 0, 0.75)
 		padding: 10px
-		@include border-radius(0 0 6px 6px)
+		border-radius: 0 0 6px 6px
 		@include transition (all 0.2s ease-in-out)
 		&:hover
 			color: #fff
@@ -122,7 +126,8 @@ a.signin_btn
 	img
 		float: left
 		vertical-align: top
+		background-color: #000
 		background-color: rgba(0, 0, 0, 0.75)
 		padding: 10px
-		@include border-radius(0 0 6px 6px)
+		border-radius: 0 0 6px 6px
 		@include transition (all 1.0s ease-in-out)

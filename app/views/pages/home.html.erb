@@ -14,7 +14,7 @@
   	<p><%= link_to 'Sign in with Twitter', '/auth/twitter', class: 'signin_btn' %></p>
   <% end %>
   <br/><br/>
-  <p>Today's Latest Deal: <%= link_to @deal.coupon_text, @deal %> at <%= @deal.advertiser.business_name %></p>
+  <p>Latest Deal: <%= link_to @deal.coupon_text, @deal, class: 'today_deal' %> at <%= @deal.advertiser.business_name %></p>
 </div>
 
 <script>
